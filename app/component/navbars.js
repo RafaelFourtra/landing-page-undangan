@@ -1,9 +1,16 @@
 import React from "react";
 import {Navbar, NavbarBrand, NavbarContent, NavbarItem, Link, Button} from "@nextui-org/react";
+import { Plus_Jakarta_Sans } from "next/font/google";
 
+const jakartaSans = Plus_Jakarta_Sans({ 
+    subsets: ['latin'], 
+    display: 'swap',
+  })
+
+  
 const Navbars = () => {
     return (
-        <Navbar className="p-4">
+        <Navbar className={`${jakartaSans.className} p-4`}>
             <NavbarBrand>
                 {/* <AcmeLogo /> */}
                 <p className="font-bold text-inherit">LOGO</p>
