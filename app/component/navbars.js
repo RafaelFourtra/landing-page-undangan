@@ -5,23 +5,22 @@ import { Plus_Jakarta_Sans } from "next/font/google";
 const jakartaSans = Plus_Jakarta_Sans({ 
     subsets: ['latin'], 
     display: 'swap',
-  })
+})
 
   
 const Navbars = () => {
     return (
         <Navbar className={`${jakartaSans.className} p-4`}>
             <NavbarBrand>
-                {/* <AcmeLogo /> */}
                 <p className="font-bold text-inherit">LOGO</p>
             </NavbarBrand>
             <NavbarContent className="hidden sm:flex gap-4" justify="left">
-                <NavbarItem>
+                <NavbarItem isActive>
                     <Link aria-current="page" href="#">
                         Home
                     </Link>
                 </NavbarItem>
-                <NavbarItem isActive>
+                <NavbarItem>
                     <Link href="#" color="foreground">
                         Tema & Filter IG
                     </Link>

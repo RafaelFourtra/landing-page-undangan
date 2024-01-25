@@ -1,18 +1,21 @@
 import Image from 'next/image'
-import { Oswald } from 'next/font/google'
 
 // Component
 import Navbars from "./component/navbars"
+import SectionOne from "./home/section1"
 
-const inter = Oswald({ 
-  subsets: ['latin'], 
+// Font
+import { Plus_Jakarta_Sans } from "next/font/google";
+const jakartaSans = Plus_Jakarta_Sans({
+  subsets: ['latin'],
   display: 'swap',
 })
 
 export default function Home() {
   return (
-    <main>
+    <main className={`${jakartaSans.className}`}>
       <Navbars />
+      <SectionOne />
     </main>
   )
 }
