@@ -3,6 +3,8 @@ import Image from 'next/image'
 // Component
 import Navbars from "./component/navbars"
 import SectionOne from "./home/section1"
+import SectionTwo from "./home/section2"
+
 
 // Font
 import { Plus_Jakarta_Sans } from "next/font/google";
@@ -16,6 +18,7 @@ export default function Home() {
     <main className={`${jakartaSans.className}`}>
       <Navbars />
       <SectionOne />
+      <SectionTwo />
     </main>
   )
 }
