@@ -1,7 +1,12 @@
-.descriptionColor{
+.descriptionCardColor{
     color: #688297;
+    font-weight: normal;
 }
 
 .titleColor{
     color: #221C35;
+}
+
+.backgroundCard{
+    background-color: #E7F0FF;
 }
