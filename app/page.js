@@ -5,6 +5,10 @@ import Navbars from "./component/navbars"
 import SectionOne from "./home/section1"
 import SectionTwo from "./home/section2"
 import SectionThree from './home/section3';
+import SectionFour from './home/section4';
+import SectionFive from './home/section5'
+import SectionSix from './home/section6'
+import Footer from './component/footer'
 
 
 // Font
@@ -22,6 +26,10 @@ export default function Home() {
       <SectionOne />
       <SectionTwo />
       <SectionThree />
+      <SectionFour />
+      <SectionFive />
+      <SectionSix />
+      <Footer />
     </main>
   )
 }
