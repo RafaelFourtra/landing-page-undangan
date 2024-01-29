@@ -19,11 +19,13 @@ const SectionFour = () => {
                         <img className='block mx-auto' src="https://res.cloudinary.com/practicaldev/image/fetch/s--l4Ne9mZQ--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_100%2Cw_880/https://res.cloudinary.com/practicaldev/image/fetch/s--1uwa-GMK--/c_limit%252Cf_auto%252Cfl_progressive%252Cq_auto%252Cw_350/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/pbqud1ltn46amch1q6jy.jpg" />
                     </div>
                 </div>
-                <div className="p-10">
-                    <img src=".../public/image/home/section4/SectionFourImage.png" alt="me" width="64" height="64" />
-                    <h1 className="text-4xl font-bold mb-4">Kenapa Kami Jadi Pilihan Yang Tepat?</h1>
-                    <h3>Kami selalu memberikan pelayanan & harga terbaik dalam pasar dan menyediakan transaksi 24 jam.</h3>
-                    <Button className={`${styles.buttonstyles} my-3`} radius="full" size="md">Mulai Sekarang <FaArrowRight /></Button>
+                <div className="p-10 flex items-center">
+                    <div>
+                        <img src="/image/home/section4/SectionFourImage.png" className="w-96 py-9" alt="me" />
+                        <h1 className="text-4xl font-bold mb-4">Kenapa Kami Jadi Pilihan Yang Tepat?</h1>
+                        <h3>Kami selalu memberikan pelayanan & harga terbaik dalam pasar dan menyediakan transaksi 24 jam.</h3>
+                        <Button className={`${styles.buttonstyles} my-3`} radius="full" size="md">Mulai Sekarang <FaArrowRight /></Button>
+                    </div>
                 </div>
             </div>
         </div>

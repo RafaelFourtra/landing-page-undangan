@@ -7,7 +7,7 @@ import SectionTwo from "./home/section2"
 import SectionThree from './home/section3';
 import SectionFour from './home/section4';
 import SectionFive from './home/section5'
-import SectionSix from './home/section6'
+import SectionSeven from './home/section7'
 import Footer from './component/footer'
 
 
@@ -28,7 +28,7 @@ export default function Home() {
       <SectionThree />
       <SectionFour />
       <SectionFive />
-      <SectionSix />
+      <SectionSeven />
       <Footer />
     </main>
   )
