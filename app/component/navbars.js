@@ -2,8 +2,9 @@
 
 import React from "react";
 import { usePathname, useRouter } from 'next/navigation';
-import { Navbar, NavbarBrand, NavbarContent, NavbarItem, Link } from "@nextui-org/react";
+import { Navbar, NavbarBrand, NavbarContent, NavbarItem } from "@nextui-org/react";
 import { Plus_Jakarta_Sans } from "next/font/google";
+import Link from 'next/link'
 import { FiShoppingCart } from "react-icons/fi";
 import Styles from "./css/navbarCss.module.css"
 
