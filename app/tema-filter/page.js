@@ -12,7 +12,7 @@ const jakartaSans = Plus_Jakarta_Sans({
   display: 'swap',
 })
 
-export default function Home() {
+export default function TemaFilter() {
   return (
     <main className={`${jakartaSans.className}`}>
       <Navbars />

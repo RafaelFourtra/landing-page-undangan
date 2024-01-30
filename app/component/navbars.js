@@ -1,9 +1,11 @@
 "use client"
 
 import React from "react";
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { Navbar, NavbarBrand, NavbarContent, NavbarItem, Link } from "@nextui-org/react";
 import { Plus_Jakarta_Sans } from "next/font/google";
+import { FiShoppingCart } from "react-icons/fi";
+import Styles from "./css/navbarCss.module.css"
 
 const jakartaSans = Plus_Jakarta_Sans({
     subsets: ['latin'],
@@ -16,8 +18,15 @@ const Navbars = () => {
     const isActiveTwo = pathname.startsWith('/tema-filter');
     const isActiveThree = pathname.startsWith('/kontak');
 
+    const router = useRouter()
+    const handleClick = (e, path) => {
+        if(path === '/cart'){
+            router.push(path)
+        }
+    }
+
     return (
-        <Navbar className={`${jakartaSans.className} p-2`}>
+        <Navbar className={`${jakartaSans.className} p-2 ${Styles.navbar}`}>
             <NavbarBrand>
                 <p className="font-bold text-inherit">LOGO</p>
             </NavbarBrand>
@@ -47,7 +56,9 @@ const Navbars = () => {
                     </Link>
                 </NavbarItem>
             </NavbarContent>
-            <NavbarContent justify="end">
+            <NavbarContent className="w-fit" justify="end">
+                <FiShoppingCart className="text-xl cursor-pointer" onClick={(e) => handleClick(e, '/cart')} />
+                <div className="border border-black rounded-full h-3/4"></div>
                 <NavbarItem className="bg-[#035B7D] p-2 px-8 rounded-full">
                     <Link className="text-white" href="#">Login</Link>
                 </NavbarItem>
