@@ -2,8 +2,9 @@
 
 import React from "react";
 import { usePathname } from 'next/navigation';
-import { Navbar, NavbarBrand, NavbarContent, NavbarItem, Link } from "@nextui-org/react";
+import { Navbar, NavbarBrand, NavbarContent, NavbarItem } from "@nextui-org/react";
 import { Plus_Jakarta_Sans } from "next/font/google";
+import Link from 'next/link'
 
 const jakartaSans = Plus_Jakarta_Sans({
     subsets: ['latin'],

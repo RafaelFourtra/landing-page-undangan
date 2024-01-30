@@ -1,4 +1,3 @@
-import Image from 'next/image'
 
 // Component
 import Navbars from "./component/navbars"
@@ -9,10 +8,11 @@ import SectionFour from './home/section4';
 import SectionFive from './home/section5'
 import SectionSeven from './home/section7'
 import Footer from './component/footer'
-
+import SectionSix from './home/section6';
 
 // Font
 import { Plus_Jakarta_Sans } from "next/font/google";
+
 
 const jakartaSans = Plus_Jakarta_Sans({
   subsets: ['latin'],
@@ -28,6 +28,7 @@ export default function Home() {
       <SectionThree />
       <SectionFour />
       <SectionFive />
+      <SectionSix />
       <SectionSeven />
       <Footer />
     </main>

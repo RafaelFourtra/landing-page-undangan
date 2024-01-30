@@ -38,18 +38,17 @@ const SectionTwo = () => {
             <div className="grid grid-cols-4 gap-3">
             {list.map((item, index) => (
             <Card className={`${styles.backgroundCard} py-4 shadow-md`}>
-                
                 <CardBody className="overflow-visible py-2">
                     <Image
+                    isZoomed
                     alt="Card background"
-                    className="object-cover rounded-xl mx-auto"
+                    className="object-cover rounded-xl mx-auto w-full"
                     src="https://res.cloudinary.com/practicaldev/image/fetch/s--l4Ne9mZQ--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_100%2Cw_880/https://res.cloudinary.com/practicaldev/image/fetch/s--1uwa-GMK--/c_limit%252Cf_auto%252Cfl_progressive%252Cq_auto%252Cw_350/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/pbqud1ltn46amch1q6jy.jpg"
-                    width={300}
                     />
                 </CardBody>
                 <CardFooter className="pb-0 pt-2 px-4 flex-col items-start">
                     <h4 className={`${styles.titleColor} font-bold text-large`}>{item.title}</h4>
-                    <p className={`${styles.descriptionCardColor} mt-2 text-tiny uppercase font-bold`}>{item.description}</p>  
+                    <p className={`${styles.descriptionCardColor} mt-2 text-tiny font-bold`}>{item.description}</p>  
                     <Button className={`${styles.descriptionCardColor} mt-4 bg-transparent`} radius="full" size="md">Lihat lebih lanjut <FaArrowRight /></Button>
                 </CardFooter>
             </Card>

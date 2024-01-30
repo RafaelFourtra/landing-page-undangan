@@ -1,7 +1,29 @@
 import {Button} from "@nextui-org/react";
+import styles from "../home/css/section3Home.module.css";
+import { FaCircleCheck } from "react-icons/fa6";
 
 
 const SectionThree = () => {
+
+    const list = [
+        {
+          title: "Keunggulan",
+          description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        },
+        {
+          title: "Keunggulan",
+          description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        },
+        {
+          title: "Keunggulan",
+          description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        },
+        {
+            title: "Keunggulan",
+            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        },
+      ];
+
     return(
         <>
         <div className={`container mx-auto px-10 mt-20`}>
@@ -9,11 +31,20 @@ const SectionThree = () => {
                 <div className='p-4'>
                     <div className='flex items-center justify-center'>
                         <div>
-                            <h4 className={`text-[3rem] leading-[4rem] font-black`}>
+                            <h4 className={`${styles.title} text-[3rem] leading-[3.5rem] font-black`}>
                                 Keunggulan dan fitur
                                 <br />
                                 pelayanan kami
-                            </h4>                           
+                            </h4>  
+                                <p className={`${styles.description} mt-1 leading-[1.6rem] py-5 text-lg`}>Lengkapi website undangan digitalmu dengan beragam fitur yang dapat disesuaikan dengan seleramu.</p>                             
+
+                                {list.map((item, index) => (
+                                    <div>
+                                    <h5 className='mt-4 ml-3 flex items-center'><span className={`${styles.iconColor} text-2xl`}><FaCircleCheck /></span><span className={`ml-5 text-[1.3rem] font-medium`}>{item.title}</span> </h5>
+                                    <p className={`${styles.description} mt-3 ml-14 leading-[1.6rem] text-base`}>{item.description}</p>       
+                                    </div>
+                                ))}
+
                         </div>
                     </div>
                 </div>
