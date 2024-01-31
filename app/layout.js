@@ -15,6 +15,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
+         <Providers>  
          <Providers>
             <Navbar />
             <FloatingButton />
