@@ -9,7 +9,7 @@ const SectionFive = () => {
     ];
 
     return (
-        <div className="p-10 py-15 mt-20 bg-[#E7F0FF]">
+        <div className="container mx-auto p-10 py-15 mt-20 bg-[#E7F0FF]">
             <h1 className="py-5 text-center text-4xl font-bold"><b className="text-[#549AE2]">4</b> Langkah Mudah Membuat Undangan Digital</h1>
             <div className="grid grid-cols-7 w-10/12 mt-14 py-15 block mx-auto">
                 {itemList.map((step, index) => (

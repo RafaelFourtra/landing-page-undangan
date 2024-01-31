@@ -30,7 +30,7 @@ export default function App() {
   ];
 
   return (
-    <div className='p-20 mt-20'>
+    <div className='container mx-auto p-20 mt-20'>
       <div className="grid grid-cols-4">
         <div>
           <h1 className='font-semibold mb-3 text-xl'>FAQs</h1>

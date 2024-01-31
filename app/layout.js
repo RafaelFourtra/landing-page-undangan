@@ -1,6 +1,9 @@
 import { Inter } from 'next/font/google'
 import './globals.css'
 import {Providers} from "./providers";
+import FloatingButton from "./component/floatingButton"
+import Navbar from "./component/navbars"
+import Footer from "./component/footer"
 
 
 export const metadata = {
@@ -13,7 +16,11 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body>
          <Providers>  
+         <Providers>
+            <Navbar />
+            <FloatingButton />
             {children}
+            <Footer />
          </Providers>
       </body>
     </html>

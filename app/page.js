@@ -1,13 +1,11 @@
 
 // Component
-import Navbars from "./component/navbars"
 import SectionOne from "./home/section1"
 import SectionTwo from "./home/section2"
 import SectionThree from './home/section3';
 import SectionFour from './home/section4';
 import SectionFive from './home/section5'
 import SectionSeven from './home/section7'
-import Footer from './component/footer'
 import SectionSix from './home/section6';
 
 // Font
@@ -22,7 +20,6 @@ const jakartaSans = Plus_Jakarta_Sans({
 export default function Home() {
   return (
     <main className={`${jakartaSans.className}`}>
-      <Navbars />
       <SectionOne />
       <SectionTwo />
       <SectionThree />
@@ -30,7 +27,6 @@ export default function Home() {
       <SectionFive />
       <SectionSix />
       <SectionSeven />
-      <Footer />
     </main>
   )
 }
