@@ -6,7 +6,7 @@ import {Button} from "@nextui-org/react";
 
 const SectionOne = () => {
     return (
-        <div className={`${styles.section1} container mx-auto px-10 pt-44`}>
+        <div className={`${styles.section1} container mx-auto px-10 pt-24`}>
         <div className="grid grid-cols-2">
             <div className='p-4'>
                 <div className='flex items-center justify-center'>
