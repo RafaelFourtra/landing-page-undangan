@@ -55,12 +55,12 @@ const SectionSix = () => {
             {
             title: "Silver",
             description: "Bebas berkreasi, bikin undangan sendiri. Semua yang kamu butuhkan ada disini.",
-            id: 2
+            id: 4
             },
             {
             title: "Gold",
             description: "Bebas berkreasi, bikin undangan sendiri. Semua yang kamu butuhkan ada disini.",
-            id: 3
+            id: 5
             }
         );
         } else if (selectedId === 3){
@@ -68,21 +68,21 @@ const SectionSix = () => {
             {
             title: "Silver",
             description: "Bebas berkreasi, bikin undangan sendiri. Semua yang kamu butuhkan ada disini.",
-            id: 2
+            id: 6
             },
         );
         }
 
       const cardContent = (id) => {
             return (
-                <div className="container mx-auto px-10 w-9/12 mt-8">
-                <div className={`grid grid-cols-${listCard.length < 3 ? listCard.length : 3} gap-3 mx-auto`}>
+                <div className="container mx-auto w-10/12 mt-8">
+                <div className={`grid grid-cols-${listCard.length < 3 ? listCard.length : 3} gap-5 mx-auto`}>
                     {listCard.map((item, index) => (
                         <Card className={`py-4 shadow-md w-[350px] ${selectedId === 2 && index % 2 === 0 ? 'ml-auto' : selectedId === 2 ? 'mr-auto' : 'mx-auto'}`}>
                             <CardHeader className='bg-[#E7F0FF] px-5 py-5'>
                               <div>
                                 <h4 className={`font-bold text-2xl mb-2 block text-[#221C35]`}>{item.title}</h4>
-                                <p className={`text-sm font-bold w-72 text-[#688297]`}>{item.description}</p>  
+                                <p className={`text-sm font-semibold w-72 text-[#688297]`}>{item.description}</p>  
                                 <h4 className={`font-bold text-xl mt-5 block text-[#221C35] line-through`}>Rp 79,000</h4>
                                 <h4 className={`font-bold text-3xl block text-[#221C35]`}>Rp 99,000</h4>
 

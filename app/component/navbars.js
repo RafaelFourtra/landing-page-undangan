@@ -2,11 +2,12 @@
 
 import React from "react";
 import { usePathname, useRouter } from 'next/navigation';
-import { Navbar, NavbarBrand, NavbarContent, NavbarItem } from "@nextui-org/react";
+import { Navbar, NavbarBrand, NavbarContent, NavbarItem, Image } from "@nextui-org/react";
 import { Plus_Jakarta_Sans } from "next/font/google";
 import Link from 'next/link'
 import { FiShoppingCart } from "react-icons/fi";
 import Styles from "./css/navbarCss.module.css"
+
 
 const jakartaSans = Plus_Jakarta_Sans({
     subsets: ['latin'],
@@ -29,7 +30,11 @@ const Navbars = () => {
     return (
         <Navbar className={`${jakartaSans.className} p-2 ${Styles.navbar}`}>
             <NavbarBrand>
-                <p className="font-bold text-inherit">LOGO</p>
+            <Image
+                    alt="Card background"
+                    className="object-cover mx-auto w-full"
+                    src="/image/logo/logo_text.svg"
+                    />            
             </NavbarBrand>
             <NavbarContent className="hidden sm:flex gap-4" justify="left">
                 <NavbarItem>
