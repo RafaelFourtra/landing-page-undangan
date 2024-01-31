@@ -55,12 +55,12 @@ const SectionSix = () => {
             {
             title: "Silver",
             description: "Bebas berkreasi, bikin undangan sendiri. Semua yang kamu butuhkan ada disini.",
-            id: 4
+            id: 2
             },
             {
             title: "Gold",
             description: "Bebas berkreasi, bikin undangan sendiri. Semua yang kamu butuhkan ada disini.",
-            id: 5
+            id: 3
             }
         );
         } else if (selectedId === 3){
@@ -68,7 +68,7 @@ const SectionSix = () => {
             {
             title: "Silver",
             description: "Bebas berkreasi, bikin undangan sendiri. Semua yang kamu butuhkan ada disini.",
-            id: 6
+            id: 2
             },
         );
         }

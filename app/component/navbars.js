@@ -32,7 +32,7 @@ const Navbars = () => {
             <NavbarBrand>
             <Image
                     alt="Card background"
-                    className="object-cover mx-auto w-full"
+                    className="object-cover mx-auto w-40"
                     src="/image/logo/logo_text.svg"
                     />            
             </NavbarBrand>
