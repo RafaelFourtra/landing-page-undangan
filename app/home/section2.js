@@ -48,7 +48,7 @@ const SectionTwo = () => {
                 </CardBody>
                 <CardFooter className="pb-0 pt-2 px-4 flex-col items-start">
                     <h4 className={`${styles.titleColor} font-bold text-large`}>{item.title}</h4>
-                    <p className={`${styles.descriptionCardColor} mt-2 text-tiny font-bold`}>{item.description}</p>  
+                    <p className={`${styles.descriptionCardColor} mt-2 text-sm font-bold`}>{item.description}</p>  
                     <Button className={`${styles.descriptionCardColor} mt-4 bg-transparent`} radius="full" size="md">Lihat lebih lanjut <FaArrowRight /></Button>
                 </CardFooter>
             </Card>

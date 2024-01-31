@@ -7,7 +7,7 @@ import styles from "./css/section4Home.module.css"
 
 const SectionFour = () => {
     return (
-        <div className="p-10 py-15">
+        <div className="p-10 py-15 mt-20">
             <div className="grid grid-cols-2">
                 <div className="grid grid-rows-2 grid-flow-col gap-4">
                     <div className="grid grid-cols-2 gap-4">

@@ -113,7 +113,7 @@ const SectionSix = () => {
     return (
 
         <div>
-            <h1 className="mt-[4.2rem] text-center text-4xl font-bold">Pilih Paket Terbaikmu</h1>
+            <h1 className="mt-20 text-center text-4xl font-bold">Pilih Paket Terbaikmu</h1>
             <div className="flex gap-2 items-center flex justify-center mt-[2.5rem]">
                 {list.map((item, index) => (
                     <Button size="lg" radius="sm"  className={selectedId === item.id ? "bg-[#035B7D] text-white" : "bg-white text-[#035B7D]"} onClick={() => handleButtonClick(item.id)}>

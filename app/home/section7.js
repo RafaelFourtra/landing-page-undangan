@@ -29,7 +29,7 @@ export default function App() {
   ];
 
   return (
-    <div className='p-20'>
+    <div className='p-20 mt-20'>
       <h1 className='text-center font-bold mb-10 text-3xl'>FAQ</h1>
       <Accordion variant='bordered' activeItem={activeItem} onItemChange={(item) => setActiveItem(item)}>
         {accordionItems.map((item) => (
