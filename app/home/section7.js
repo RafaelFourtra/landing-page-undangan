@@ -30,15 +30,15 @@ export default function App() {
   ];
 
   return (
-    <div className='container mx-auto p-20 mt-20'>
-      <div className="grid grid-cols-4">
-        <div>
+    <div className='container mx-auto p-20 xl:mt-20 lg:mt-5'>
+      <div className="grid xl:grid-cols-4 lg:grid-cols-5">
+        <div className="lg:col-span-2">
           <h1 className='font-semibold mb-3 text-xl'>FAQs</h1>
           <h1 className='font-bold mb-3 text-3xl'>Punya Pertanyaan Lain?</h1>
-          <h1 className='font-base w-5/6 mb-5 text-lg'>Punya Pertanyaan fsfghjkjhsgdfbvgndfvhdfhguhguheurger ehrjfgjefvjfgvegjnej</h1>
+          <h1 className='font-base w-5/6 mb-5 text-lg lg:text-base'>Punya Pertanyaan fsfghjkjhsgd fbvgndfvhdfhguhguheur ger ehrjfgje fvjfgvegjnej</h1>
           <Button className="bg-[#035B7D] font-semibold text-white" radius="full" size="md">Konsultasi Sekarang</Button>
         </div>
-        <div className='col-span-3 pl-28 flex items-center justify-center'>
+        <div className='col-span-3 xl:pl-28 lg:pl-0 flex items-center justify-center'>
           <Accordion variant='bordered' activeItem={activeItem} onItemChange={(item) => setActiveItem(item)}>
             {accordionItems.map((item) => (
               <AccordionItem className='font-semibold text-sm' key={item.id} aria-label={item.ariaLabel} title={item.title}>

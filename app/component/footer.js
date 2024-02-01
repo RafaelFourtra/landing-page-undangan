@@ -2,7 +2,7 @@ import { FaWhatsapp, FaInstagram, FaFacebookF } from "react-icons/fa6";
 
 const Footer = () => {
     return (
-        <div className="container mx-auto p-10 px-28 pt-20 pb-0 bg-[#E7F0FF]">
+        <div className="container mx-auto p-10 xl:px-28 lg:px-16 pt-20 pb-0 bg-[#E7F0FF]">
             <div className="grid grid-cols-3 pb-4 border-[#D2D2D2] border-b-2">
                 <div className="col-span-2">
                     <div className="grid grid-cols-2">
@@ -49,24 +49,24 @@ const Footer = () => {
                         <br />
                         Email: hi@kitaberdua.com
                     </h1>
-                    <div className="grid grid-cols-3 pt-4 w-6/12">
+                    <div className="grid grid-cols-3 pt-4 xl:w-6/12 lg:w-8/12">
                         <div>
-                            <div class="w-12 h-12 rounded-full flex items-center justify-center bg-[#D9D9D9]">
-                                <h1 className="text-2xl text-[#549AE2] font-bold">
+                            <div class="xl:w-12 xl:h-12 lg:w-10 lg:h-10 rounded-full flex items-center justify-center bg-[#D9D9D9]">
+                                <h1 className="xl:text-2xl lg:text-xl text-[#549AE2] font-bold">
                                     <FaWhatsapp />
                                 </h1>
                             </div>
                         </div>
                         <div>
-                            <div class="w-12 h-12 rounded-full flex items-center justify-center bg-[#D9D9D9]">
-                                <h1 className="text-2xl text-[#549AE2] font-bold">
+                            <div class="xl:w-12 xl:h-12 lg:w-10 lg:h-10 rounded-full flex items-center justify-center bg-[#D9D9D9]">
+                                <h1 className="xl:text-2xl lg:text-xl text-[#549AE2] font-bold">
                                     <FaInstagram />
                                 </h1>
                             </div>
                         </div>
                         <div>
-                            <div class="w-12 h-12 rounded-full flex items-center justify-center bg-[#D9D9D9]">
-                                <h1 className="text-2xl text-[#549AE2] font-bold">
+                            <div class="xl:w-12 xl:h-12 lg:w-10 lg:h-10 rounded-full flex items-center justify-center bg-[#D9D9D9]">
+                                <h1 className="xl:text-2xl lg:text-xl text-[#549AE2] font-bold">
                                     <FaFacebookF />
                                 </h1>
                             </div>

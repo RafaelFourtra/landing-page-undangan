@@ -6,10 +6,10 @@ import {Button} from "@nextui-org/react";
 
 const SectionOne = () => {
     return (
-        <div className={`${styles.section1} container mx-auto px-10 pt-24`}>
-        <div className="grid grid-cols-2 lg:grid-cols-1">
-            <div className='p-4'>
-                <div className='flex items-center justify-center'>
+        <div className={`${styles.section1} container mx-auto px-10 py-10`}>
+        <div className="grid xl:grid-cols-2 lg:grid-cols-1">
+            <div className='p-4 flex items-center justify-center'>
+                <div className=''>
                     <div>
                         <h1 className={`${styles.title} text-[3rem] leading-[4rem] font-black`}>
                             Buat Undangan Online
