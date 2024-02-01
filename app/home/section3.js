@@ -26,22 +26,22 @@ const SectionThree = () => {
 
     return(
         <>
-        <div className={`container mx-auto px-10 mt-20`}>
+        <div className={`container mx-auto px-10 xl:mt-20 lg:mt-20`}>
             <div className="grid grid-cols-2">
                 <div className='p-4'>
                     <div className='flex items-center justify-center'>
                         <div>
-                            <h4 className={`${styles.title} text-[3rem] leading-[3.5rem] font-black`}>
+                            <h4 className={`${styles.title} xl:text-[3rem] lg:text-[2.2rem] xl:leading-[3.5rem] lg:leading-[2.5rem] font-black`}>
                                 Keunggulan dan fitur
                                 <br />
                                 pelayanan kami
                             </h4>  
-                                <p className={`${styles.description} mt-1 leading-[1.6rem] py-5 text-lg`}>Lengkapi website undangan digitalmu dengan beragam fitur yang dapat disesuaikan dengan seleramu.</p>                             
+                                <p className={`${styles.description} mt-1 leading-[1.6rem] py-5 xl:text-lg lg:text-base`}>Lengkapi website undangan digitalmu dengan beragam fitur yang dapat disesuaikan dengan seleramu.</p>                             
 
                                 {list.map((item, index) => (
                                     <div>
-                                    <h5 className='mt-4 ml-3 flex items-center'><span className={`${styles.iconColor} text-2xl`}><FaCircleCheck /></span><span className={`ml-5 text-[1.3rem] font-medium`}>{item.title}</span> </h5>
-                                    <p className={`${styles.description} mt-3 ml-14 leading-[1.6rem] text-base`}>{item.description}</p>       
+                                    <h5 className='xl:mt-4 lg:mt-2 ml-3 flex items-center'><span className={`${styles.iconColor} xl:text-2xl lg:text-lg`}><FaCircleCheck /></span><span className={`ml-5 text-[1.3rem] font-medium`}>{item.title}</span> </h5>
+                                    <p className={`${styles.description} xl:mt-3 lg:mt-1 ml-14 xl:leading-[1.6rem] lg:leading-[1.3rem] text-base`}>{item.description}</p>       
                                     </div>
                                 ))}
 
