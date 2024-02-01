@@ -33,6 +33,104 @@ const SectionTwo = () => {
         },
       ];
 
+
+      const listCard = [];
+
+      if (selectedId === 1) {
+      listCard.push(
+          {
+            title: "Tema 1",
+            image: "https://res.cloudinary.com/practicaldev/image/fetch/s--l4Ne9mZQ--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_100%2Cw_880/https://res.cloudinary.com/practicaldev/image/fetch/s--1uwa-GMK--/c_limit%252Cf_auto%252Cfl_progressive%252Cq_auto%252Cw_350/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/pbqud1ltn46amch1q6jy.jpg",
+            url: "test/coba",
+            id: 1,
+          },
+          {
+            title: "Tema 2",
+            image: "https://res.cloudinary.com/practicaldev/image/fetch/s--l4Ne9mZQ--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_100%2Cw_880/https://res.cloudinary.com/practicaldev/image/fetch/s--1uwa-GMK--/c_limit%252Cf_auto%252Cfl_progressive%252Cq_auto%252Cw_350/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/pbqud1ltn46amch1q6jy.jpg",
+            url: "test/coba",
+            id: 2,
+          },
+          {
+            title: "Tema 3",
+            image: "https://res.cloudinary.com/practicaldev/image/fetch/s--l4Ne9mZQ--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_100%2Cw_880/https://res.cloudinary.com/practicaldev/image/fetch/s--1uwa-GMK--/c_limit%252Cf_auto%252Cfl_progressive%252Cq_auto%252Cw_350/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/pbqud1ltn46amch1q6jy.jpg",
+            url: "test/coba",
+            id: 3,
+          },
+          {
+            title: "Tema 4",
+            image: "https://res.cloudinary.com/practicaldev/image/fetch/s--l4Ne9mZQ--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_100%2Cw_880/https://res.cloudinary.com/practicaldev/image/fetch/s--1uwa-GMK--/c_limit%252Cf_auto%252Cfl_progressive%252Cq_auto%252Cw_350/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/pbqud1ltn46amch1q6jy.jpg",
+            url: "test/coba",
+            id: 4,
+          },
+          {
+            title: "Tema 5",
+            image: "https://res.cloudinary.com/practicaldev/image/fetch/s--l4Ne9mZQ--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_100%2Cw_880/https://res.cloudinary.com/practicaldev/image/fetch/s--1uwa-GMK--/c_limit%252Cf_auto%252Cfl_progressive%252Cq_auto%252Cw_350/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/pbqud1ltn46amch1q6jy.jpg",
+            url: "test/coba",
+            id: 5,
+          },
+          {
+            title: "Tema 6",
+            image: "https://res.cloudinary.com/practicaldev/image/fetch/s--l4Ne9mZQ--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_100%2Cw_880/https://res.cloudinary.com/practicaldev/image/fetch/s--1uwa-GMK--/c_limit%252Cf_auto%252Cfl_progressive%252Cq_auto%252Cw_350/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/pbqud1ltn46amch1q6jy.jpg",
+            url: "test/coba",
+            id: 6,
+          },
+          {
+            title: "Tema 7",
+            image: "https://res.cloudinary.com/practicaldev/image/fetch/s--l4Ne9mZQ--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_100%2Cw_880/https://res.cloudinary.com/practicaldev/image/fetch/s--1uwa-GMK--/c_limit%252Cf_auto%252Cfl_progressive%252Cq_auto%252Cw_350/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/pbqud1ltn46amch1q6jy.jpg",
+            url: "test/coba",
+            id: 7,
+          },
+      );
+      } else if(selectedId === 2) {
+      listCard.push(
+        {
+            title: "Tema 1",
+            image: "https://res.cloudinary.com/practicaldev/image/fetch/s--l4Ne9mZQ--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_100%2Cw_880/https://res.cloudinary.com/practicaldev/image/fetch/s--1uwa-GMK--/c_limit%252Cf_auto%252Cfl_progressive%252Cq_auto%252Cw_350/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/pbqud1ltn46amch1q6jy.jpg",
+            url: "test/coba",
+            id: 1,
+          },
+          {
+            title: "Tema 2",
+            image: "https://res.cloudinary.com/practicaldev/image/fetch/s--l4Ne9mZQ--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_100%2Cw_880/https://res.cloudinary.com/practicaldev/image/fetch/s--1uwa-GMK--/c_limit%252Cf_auto%252Cfl_progressive%252Cq_auto%252Cw_350/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/pbqud1ltn46amch1q6jy.jpg",
+            url: "test/coba",
+            id: 2,
+          },
+          {
+            title: "Tema 3",
+            image: "https://res.cloudinary.com/practicaldev/image/fetch/s--l4Ne9mZQ--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_100%2Cw_880/https://res.cloudinary.com/practicaldev/image/fetch/s--1uwa-GMK--/c_limit%252Cf_auto%252Cfl_progressive%252Cq_auto%252Cw_350/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/pbqud1ltn46amch1q6jy.jpg",
+            url: "test/coba",
+            id: 3,
+          },
+          {
+            title: "Tema 4",
+            image: "https://res.cloudinary.com/practicaldev/image/fetch/s--l4Ne9mZQ--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_100%2Cw_880/https://res.cloudinary.com/practicaldev/image/fetch/s--1uwa-GMK--/c_limit%252Cf_auto%252Cfl_progressive%252Cq_auto%252Cw_350/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/pbqud1ltn46amch1q6jy.jpg",
+            url: "test/coba",
+            id: 4,
+          },
+      );
+      } else if (selectedId === 3){
+        listCard.push(
+            {
+                title: "Tema 1",
+                image: "https://res.cloudinary.com/practicaldev/image/fetch/s--l4Ne9mZQ--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_100%2Cw_880/https://res.cloudinary.com/practicaldev/image/fetch/s--1uwa-GMK--/c_limit%252Cf_auto%252Cfl_progressive%252Cq_auto%252Cw_350/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/pbqud1ltn46amch1q6jy.jpg",
+                url: "test/coba",
+                id: 1,
+              },
+              {
+                title: "Tema 2",
+                image: "https://res.cloudinary.com/practicaldev/image/fetch/s--l4Ne9mZQ--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_100%2Cw_880/https://res.cloudinary.com/practicaldev/image/fetch/s--1uwa-GMK--/c_limit%252Cf_auto%252Cfl_progressive%252Cq_auto%252Cw_350/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/pbqud1ltn46amch1q6jy.jpg",
+                url: "test/coba",
+                id: 2,
+              },
+              {
+                title: "Tema 3",
+                image: "https://res.cloudinary.com/practicaldev/image/fetch/s--l4Ne9mZQ--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_100%2Cw_880/https://res.cloudinary.com/practicaldev/image/fetch/s--1uwa-GMK--/c_limit%252Cf_auto%252Cfl_progressive%252Cq_auto%252Cw_350/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/pbqud1ltn46amch1q6jy.jpg",
+                url: "test/coba",
+                id: 3,
+              },
+          );
+      }
+
     return (
         <div className="p-10">
             <h1 className="mt-10 text-center text-4xl font-bold">Pilih Paket Terbaikmu</h1>
@@ -51,88 +149,24 @@ const SectionTwo = () => {
             </div>
 
             <div className="grid grid-cols-4 gap-5 pt-10">
+                {listCard.map((item, index) => (
                 <div>
                     <div>
-                        <img className="rounded-t-lg" src="https://res.cloudinary.com/practicaldev/image/fetch/s--l4Ne9mZQ--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_100%2Cw_880/https://res.cloudinary.com/practicaldev/image/fetch/s--1uwa-GMK--/c_limit%252Cf_auto%252Cfl_progressive%252Cq_auto%252Cw_350/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/pbqud1ltn46amch1q6jy.jpg" />
+                        <img className="rounded-t-lg" src={item.image} />
                         <div className="p-3 px-5 bg-[#E7F0FF] rounded-b-lg">
-                            <h1 className="font-semibold text-lg">Nama Tema</h1>
-                            <Button className="w-full bg-[#035B7D] text-white my-2 mt-5" radius="full" size="md">Preview Tema <FaArrowRight /></Button>
-                            <Button className="w-full bg-transparent text-[#035B7D] border-2 border-[#035B7D] my-1" radius="full" size="md">Masukan Keranjang <MdOutlineShoppingCartCheckout /></Button>
+                            <h1 className="font-semibold text-lg">{item.title}</h1>
+                            <div class="grid grid-cols-2 gap-2">
+                                <div>
+                                <Button className="w-full bg-[#035B7D] text-white my-2 mt-5" radius='sm' size="md">Preview Tema <FaArrowRight /></Button>
+                                </div>
+                                <div>
+                                <Button className="w-full bg-transparent text-[#035B7D] mt-5 border-2 border-[#035B7D] text-center" radius="sm" size="md">Gunakan <MdOutlineShoppingCartCheckout /></Button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div>
-                    <div>
-                        <img className="rounded-t-lg" src="https://res.cloudinary.com/practicaldev/image/fetch/s--l4Ne9mZQ--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_100%2Cw_880/https://res.cloudinary.com/practicaldev/image/fetch/s--1uwa-GMK--/c_limit%252Cf_auto%252Cfl_progressive%252Cq_auto%252Cw_350/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/pbqud1ltn46amch1q6jy.jpg" />
-                        <div className="p-3 px-5 bg-[#E7F0FF] rounded-b-lg">
-                            <h1 className="font-semibold text-lg">Nama Tema</h1>
-                            <Button className="w-full bg-[#035B7D] text-white my-2 mt-5" radius="full" size="md">Preview Tema <FaArrowRight /></Button>
-                            <Button className="w-full bg-transparent text-[#035B7D] border-2 border-[#035B7D] my-1" radius="full" size="md">Masukan Keranjang <MdOutlineShoppingCartCheckout /></Button>
-                        </div>
-                    </div>
-                </div>
-                <div>
-                    <div>
-                        <img className="rounded-t-lg" src="https://res.cloudinary.com/practicaldev/image/fetch/s--l4Ne9mZQ--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_100%2Cw_880/https://res.cloudinary.com/practicaldev/image/fetch/s--1uwa-GMK--/c_limit%252Cf_auto%252Cfl_progressive%252Cq_auto%252Cw_350/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/pbqud1ltn46amch1q6jy.jpg" />
-                        <div className="p-3 px-5 bg-[#E7F0FF] rounded-b-lg">
-                            <h1 className="font-semibold text-lg">Nama Tema</h1>
-                            <Button className="w-full bg-[#035B7D] text-white my-2 mt-5" radius="full" size="md">Preview Tema <FaArrowRight /></Button>
-                            <Button className="w-full bg-transparent text-[#035B7D] border-2 border-[#035B7D] my-1" radius="full" size="md">Masukan Keranjang <MdOutlineShoppingCartCheckout /></Button>
-                        </div>
-                    </div>
-                </div>
-                <div>
-                    <div>
-                        <img className="rounded-t-lg" src="https://res.cloudinary.com/practicaldev/image/fetch/s--l4Ne9mZQ--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_100%2Cw_880/https://res.cloudinary.com/practicaldev/image/fetch/s--1uwa-GMK--/c_limit%252Cf_auto%252Cfl_progressive%252Cq_auto%252Cw_350/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/pbqud1ltn46amch1q6jy.jpg" />
-                        <div className="p-3 px-5 bg-[#E7F0FF] rounded-b-lg">
-                            <h1 className="font-semibold text-lg">Nama Tema</h1>
-                            <Button className="w-full bg-[#035B7D] text-white my-2 mt-5" radius="full" size="md">Preview Tema <FaArrowRight /></Button>
-                            <Button className="w-full bg-transparent text-[#035B7D] border-2 border-[#035B7D] my-1" radius="full" size="md">Masukan Keranjang <MdOutlineShoppingCartCheckout /></Button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div className="grid grid-cols-4 gap-5 pt-10">
-                <div>
-                    <div>
-                        <img className="rounded-t-lg" src="https://res.cloudinary.com/practicaldev/image/fetch/s--l4Ne9mZQ--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_100%2Cw_880/https://res.cloudinary.com/practicaldev/image/fetch/s--1uwa-GMK--/c_limit%252Cf_auto%252Cfl_progressive%252Cq_auto%252Cw_350/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/pbqud1ltn46amch1q6jy.jpg" />
-                        <div className="p-3 px-5 bg-[#E7F0FF] rounded-b-lg">
-                            <h1 className="font-semibold text-lg">Nama Tema</h1>
-                            <Button className="w-full bg-[#035B7D] text-white my-2 mt-5" radius="full" size="md">Preview Tema <FaArrowRight /></Button>
-                            <Button className="w-full bg-transparent text-[#035B7D] border-2 border-[#035B7D] my-1" radius="full" size="md">Masukan Keranjang <MdOutlineShoppingCartCheckout /></Button>
-                        </div>
-                    </div>
-                </div>
-                <div>
-                    <div>
-                        <img className="rounded-t-lg" src="https://res.cloudinary.com/practicaldev/image/fetch/s--l4Ne9mZQ--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_100%2Cw_880/https://res.cloudinary.com/practicaldev/image/fetch/s--1uwa-GMK--/c_limit%252Cf_auto%252Cfl_progressive%252Cq_auto%252Cw_350/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/pbqud1ltn46amch1q6jy.jpg" />
-                        <div className="p-3 px-5 bg-[#E7F0FF] rounded-b-lg">
-                            <h1 className="font-semibold text-lg">Nama Tema</h1>
-                            <Button className="w-full bg-[#035B7D] text-white my-2 mt-5" radius="full" size="md">Preview Tema <FaArrowRight /></Button>
-                            <Button className="w-full bg-transparent text-[#035B7D] border-2 border-[#035B7D] my-1" radius="full" size="md">Masukan Keranjang <MdOutlineShoppingCartCheckout /></Button>
-                        </div>
-                    </div>
-                </div>
-                <div>
-                    <div>
-                        <img className="rounded-t-lg" src="https://res.cloudinary.com/practicaldev/image/fetch/s--l4Ne9mZQ--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_100%2Cw_880/https://res.cloudinary.com/practicaldev/image/fetch/s--1uwa-GMK--/c_limit%252Cf_auto%252Cfl_progressive%252Cq_auto%252Cw_350/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/pbqud1ltn46amch1q6jy.jpg" />
-                        <div className="p-3 px-5 bg-[#E7F0FF] rounded-b-lg">
-                            <h1 className="font-semibold text-lg">Nama Tema</h1>
-                            <Button className="w-full bg-[#035B7D] text-white my-2 mt-5" radius="full" size="md">Preview Tema <FaArrowRight /></Button>
-                            <Button className="w-full bg-transparent text-[#035B7D] border-2 border-[#035B7D] my-1" radius="full" size="md">Masukan Keranjang <MdOutlineShoppingCartCheckout /></Button>
-                        </div>
-                    </div>
-                </div>
-                <div>
-                    <div>
-                        <img className="rounded-t-lg" src="https://res.cloudinary.com/practicaldev/image/fetch/s--l4Ne9mZQ--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_100%2Cw_880/https://res.cloudinary.com/practicaldev/image/fetch/s--1uwa-GMK--/c_limit%252Cf_auto%252Cfl_progressive%252Cq_auto%252Cw_350/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/pbqud1ltn46amch1q6jy.jpg" />
-                        <div className="p-3 px-5 bg-[#E7F0FF] rounded-b-lg">
-                            <h1 className="font-semibold text-lg">Nama Tema</h1>
-                            <Button className="w-full bg-[#035B7D] text-white my-2 mt-5" radius="full" size="md">Preview Tema <FaArrowRight /></Button>
-                            <Button className="w-full bg-transparent text-[#035B7D] border-2 border-[#035B7D] my-1" radius="full" size="md">Masukan Keranjang <MdOutlineShoppingCartCheckout /></Button>
-                        </div>
-                    </div>
-                </div>
+                ))}
             </div>
         </div>
     )

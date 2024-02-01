@@ -75,35 +75,33 @@ const SectionSix = () => {
 
       const cardContent = (id) => {
             return (
-                <div className="container mx-auto w-10/12 mt-8">
+                <div className="container mx-auto xl:w-10/12 lg:w-9/12 mt-8">
                 <div className={`grid grid-cols-${listCard.length < 3 ? listCard.length : 3} gap-5 mx-auto`}>
                     {listCard.map((item, index) => (
-                        <Card className={`py-4 shadow-md w-[350px] ${selectedId === 2 && index % 2 === 0 ? 'ml-auto' : selectedId === 2 ? 'mr-auto' : 'mx-auto'}`}>
-                            <CardHeader className='bg-[#E7F0FF] px-5 py-5'>
-                              <div>
-                                <h4 className={`font-bold text-2xl mb-2 block text-[#221C35]`}>{item.title}</h4>
-                                <p className={`text-sm font-semibold w-72 text-[#688297]`}>{item.description}</p>  
-                                <h4 className={`font-bold text-xl mt-5 block text-[#221C35] line-through`}>Rp 79,000</h4>
-                                <h4 className={`font-bold text-3xl block text-[#221C35]`}>Rp 99,000</h4>
-
-                              </div>
-                            </CardHeader>
-                            <CardBody className="overflow-visible py-2">
-                              <p className='mt-4 ml-3 flex items-center'><span className={`text-[#035B7D] text-lg`}><FaCircleCheck /></span><span className={`ml-4 text-base font-medium`}>Wedding Fitur</span> </p>
-                              <p className='mt-2 ml-3 flex items-center'><span className={`text-[#035B7D] text-lg`}><FaCircleCheck /></span><span className={`ml-4 text-base font-medium`}>Wedding Fitur</span> </p>
-                              <p className='mt-2 ml-3 flex items-center'><span className={`text-[#035B7D] text-lg`}><FaCircleCheck /></span><span className={`ml-4 text-base font-medium`}>Wedding Fitur</span> </p>
-                              <p className='mt-2 ml-3 flex items-center'><span className={`text-[#035B7D] text-lg`}><FaCircleCheck /></span><span className={`ml-4 text-base font-medium`}>Wedding Fitur</span> </p>
-                              <p className='mt-2 ml-3 flex items-center'><span className={`text-[#035B7D] text-lg`}><FaCircleCheck /></span><span className={`ml-4 text-base font-medium`}>Wedding Fitur</span> </p>
-                              <p className='mt-2 ml-3 flex items-center'><span className={`text-[#035B7D] text-lg`}><FaCircleCheck /></span><span className={`ml-4 text-base font-medium`}>Wedding Fitur</span> </p>
-                              <p className='mt-2 ml-3 flex items-center'><span className={`text-[#035B7D] text-lg`}><FaCircleCheck /></span><span className={`ml-4 text-base font-medium`}>Wedding Fitur</span> </p>
-
-                            </CardBody>
-                            <CardFooter className="pb-0 pt-2 px-4 flex-col items-center">  
-                                <Button className={`mt-4 bg-[#035B7D] w-80 text-white`} radius="full" size="md">Pilih Paket <FaArrowRight /></Button>
-                                <Button className={`mt-3 bg-[#E7F0FF] w-80 text-[#688297]`} radius="full" size="md">Tanya Admin <FaWhatsapp /></Button>
-
-                            </CardFooter>
-                        </Card>
+                   <Card className={`py-4 shadow-md xl:w-[350px] lg:w-[250px] ${selectedId === 2 && index % 2 === 0 ? 'ml-auto' : selectedId === 2 ? 'mr-auto' : 'mx-auto'}`}>
+                   <CardHeader className='bg-[#E7F0FF] px-5 py-5'>
+                     <div>
+                       <h4 className={`font-bold text-2xl mb-2 block text-[#221C35]`}>{item.title}</h4>
+                       <p className={`text-sm font-semibold lg:w-full xl:w-72 text-[#688297]`}>{item.description}</p>
+                       <h4 className={`font-bold text-xl mt-5 block text-[#221C35] line-through`}>Rp 79,000</h4>
+                       <h4 className={`font-bold text-3xl block text-[#221C35]`}>Rp 99,000</h4>
+                     </div>
+                   </CardHeader>
+                   <CardBody className="overflow-visible py-2">
+                     <p className='mt-4 ml-3 flex items-center'><span className={`text-[#035B7D] text-lg`}><FaCircleCheck /></span><span className={`ml-4 text-base font-medium lg:w-full xl:w-72`}>Wedding Fitur</span></p>
+                     <p className='mt-2 ml-3 flex items-center'><span className={`text-[#035B7D] text-lg`}><FaCircleCheck /></span><span className={`ml-4 text-base font-medium lg:w-full xl:w-72`}>Wedding Fitur</span></p>
+                     <p className='mt-2 ml-3 flex items-center'><span className={`text-[#035B7D] text-lg`}><FaCircleCheck /></span><span className={`ml-4 text-base font-medium lg:w-full xl:w-72`}>Wedding Fitur</span></p>
+                     <p className='mt-2 ml-3 flex items-center'><span className={`text-[#035B7D] text-lg`}><FaCircleCheck /></span><span className={`ml-4 text-base font-medium lg:w-full xl:w-72`}>Wedding Fitur</span></p>
+                     <p className='mt-2 ml-3 flex items-center'><span className={`text-[#035B7D] text-lg`}><FaCircleCheck /></span><span className={`ml-4 text-base font-medium lg:w-full xl:w-72`}>Wedding Fitur</span></p>
+                     <p className='mt-2 ml-3 flex items-center'><span className={`text-[#035B7D] text-lg`}><FaCircleCheck /></span><span className={`ml-4 text-base font-medium lg:w-full xl:w-72`}>Wedding Fitur</span></p>
+                     <p className='mt-2 ml-3 flex items-center'><span className={`text-[#035B7D] text-lg`}><FaCircleCheck /></span><span className={`ml-4 text-base font-medium lg:w-full xl:w-72`}>Wedding Fitur</span></p>
+                     <p className='mt-2 ml-3 flex items-center'><span className={`text-[#035B7D] text-lg`}><FaCircleCheck /></span><span className={`ml-4 text-base font-medium lg:w-full xl:w-72`}>Wedding Fitur</span></p>
+                   </CardBody>
+                   <CardFooter className="pb-0 pt-2 px-4 flex-col items-center">
+                     <Button className={`mt-4 bg-[#035B7D] lg:w-full xl:w-80 text-white`} radius="full" size="md">Pilih Paket <FaArrowRight /></Button>
+                     <Button className={`mt-3 bg-[#E7F0FF] lg:w-full xl:w-80 text-[#688297]`} radius="full" size="md">Tanya Admin <FaWhatsapp /></Button>
+                   </CardFooter>
+                 </Card>
                     ))}
                     </div>
                 </div>
