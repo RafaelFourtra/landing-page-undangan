@@ -32,7 +32,7 @@ export default function App() {
   return (
     <div className='container mx-auto p-20 xl:mt-20 lg:mt-5'>
       <div className="grid xl:grid-cols-4 lg:grid-cols-5">
-        <div className="lg:col-span-2">
+        <div className="xl:col-span-1 lg:col-span-2">
           <h1 className='font-semibold mb-3 text-xl'>FAQs</h1>
           <h1 className='font-bold mb-3 text-3xl'>Punya Pertanyaan Lain?</h1>
           <h1 className='font-base w-5/6 mb-5 text-lg lg:text-base'>Punya Pertanyaan fsfghjkjhsgd fbvgndfvhdfhguhguheur ger ehrjfgje fvjfgvegjnej</h1>

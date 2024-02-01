@@ -1,12 +1,12 @@
 import { Button } from "@nextui-org/react";
-import {Input} from "@nextui-org/react";
+import { Input } from "@nextui-org/react";
 
 const SectionOne = () => {
     return (
-        <div className='p-24 px-10'>
+        <div className='xl:p-24 lg:p-12 px-10'>
             <h1 className='font-semibold text-3xl mb-7'>Keranjang</h1>
-            <div className="grid grid-cols-3 gap-5">
-                <div className="col-span-2">
+            <div className="xl:grid xl:grid-cols-3 lg:flex lg:flex-col-reverse lg:grid-cols-1 xl:gap-5 lg:gap-5">
+                <div className="xl:col-span-2">
                     <div className="bg-[#E7F0FF] rounded-xl">
                         <div className="grid grid-cols-3 gap-2 p-10">
                             <div className="flex items-center justify-center">
@@ -31,7 +31,7 @@ const SectionOne = () => {
                                 type="text"
                                 label="Total"
                                 variant="underlined"
-                                className="max-w-xs"
+                                className="xl:max-w-xs lg:w-full"
                             />
                             <h1 className="text-2xl text-center font-semibold my-3">12345678</h1>
                             <div className="grid grid-cols-3">
