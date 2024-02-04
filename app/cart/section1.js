@@ -3,12 +3,12 @@ import { Input } from "@nextui-org/react";
 
 const SectionOne = () => {
     return (
-        <div className='xl:p-24 lg:p-12 px-10'>
+        <div className='xl:p-24 lg:p-12 xl:px-10 lg:px-10 p-10'>
             <h1 className='font-semibold text-3xl mb-7'>Keranjang</h1>
-            <div className="xl:grid xl:grid-cols-3 lg:flex lg:flex-col-reverse lg:grid-cols-1 xl:gap-5 lg:gap-5">
+            <div className="xl:grid xl:grid-cols-3 lg:flex lg:flex-col-reverse lg:grid-cols-1 xl:gap-5 lg:gap-5 flex flex-col-reverse grid-cols-1 gap-5">
                 <div className="xl:col-span-2">
                     <div className="bg-[#E7F0FF] rounded-xl">
-                        <div className="grid grid-cols-3 gap-2 p-10">
+                        <div className="xl:grid lg:grid xl:grid-cols-3 lg:grid-cols-3 xl:gap-2 lg:gap-2 p-10 grid grid-cols-1">
                             <div className="flex items-center justify-center">
                                 <img src="/image/cart/cart.png" className="w-96 py-9" alt="me" />
                             </div>

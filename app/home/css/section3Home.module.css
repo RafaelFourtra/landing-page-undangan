@@ -9,3 +9,9 @@
 .iconColor{
     color: #035B7D;
 }
+
+.flexColReverseSm {
+    @media (max-width: 640px) { /* Atur batasan lebar untuk dimensi sm sesuai kebutuhan Anda */
+      flex-direction: column-reverse;
+    }
+  }
