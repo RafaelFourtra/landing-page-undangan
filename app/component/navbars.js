@@ -1,76 +1,81 @@
 "use client"
-
 import React from "react";
+import { Navbar, NavbarBrand, NavbarContent, NavbarItem, Link, Button, NavbarMenuToggle, NavbarMenu, NavbarMenuItem, Image } from "@nextui-org/react";
 import { usePathname, useRouter } from 'next/navigation';
-import { Navbar, NavbarBrand, NavbarContent, NavbarItem, Image } from "@nextui-org/react";
-import { Plus_Jakarta_Sans } from "next/font/google";
-import Link from 'next/link'
 import { FiShoppingCart } from "react-icons/fi";
-import Styles from "./css/navbarCss.module.css"
-
-
-const jakartaSans = Plus_Jakarta_Sans({
-    subsets: ['latin'],
-    display: 'swap',
-});
+import Styles from "./css/navbarCss.module.css";
 
 const Navbars = () => {
     const pathname = usePathname();
     const isActiveOne = pathname === '/';
     const isActiveTwo = pathname.startsWith('/tema-filter');
-    const isActiveThree = pathname.startsWith('/kontak');
 
     const router = useRouter()
     const handleClick = (e, path) => {
-        if(path === '/cart'){
+        if (path === '/cart') {
             router.push(path)
         }
     }
 
     return (
-        <Navbar className={`${jakartaSans.className} p-2 ${Styles.navbar}`}>
-            <NavbarBrand>
-            <Image
-                    alt="Card background"
-                    className="object-cover mx-auto w-40"
-                    src="/image/logo/logo_text.svg"
-                    />            
-            </NavbarBrand>
+        <Navbar className={`p-2 ${Styles.navbar} bg-white`}>
+            <NavbarContent>
+                <NavbarMenuToggle aria-label="Toggle menu" className="sm:hidden" />
+                <NavbarBrand>
+                    <Image
+                        alt="Logo"
+                        className="object-cover mx-auto w-40"
+                        src="/image/logo/logo_text.svg"
+                    />
+                </NavbarBrand>
+            </NavbarContent>
+
             <NavbarContent className="hidden sm:flex gap-4" justify="left">
                 <NavbarItem>
-                    <Link
-                        href="/"
-                        className={isActiveOne ? "text-[#549ae2]" : "text-black"}
-                    >
+                    <Link href="/" className={isActiveOne ? "text-[#549ae2]" : "text-black"}>
                         Home
                     </Link>
                 </NavbarItem>
                 <NavbarItem>
-                    <Link
-                        href="/tema-filter"
-                        className={isActiveTwo ? "text-[#549ae2]" : "text-black"}
-                    >
+                    <Link href="/tema-filter" className={isActiveTwo ? "text-[#549ae2]" : "text-black"}>
                         Tema & Filter IG
                     </Link>
                 </NavbarItem>
                 <NavbarItem>
-                    <Link
-                        href="/kontak"
-                        className={isActiveThree ? "text-[#549ae2]" : "text-black"}
-                    >
+                    <Link href="/kontak" className="text-black">
                         Kontak
                     </Link>
                 </NavbarItem>
             </NavbarContent>
+
             <NavbarContent className="w-fit" justify="end">
-                <FiShoppingCart className="text-xl cursor-pointer" onClick={(e) => handleClick(e, '/cart')} />
-                <div className="border border-black rounded-full h-3/4"></div>
+                <FiShoppingCart className="text-xl cursor-pointer" />
+                <div className="border border-[#3A4C5A] rounded-full h-3/4"></div>
                 <NavbarItem className="bg-[#035B7D] p-2 px-8 rounded-full">
-                    <Link className="text-white" href="#">Login</Link>
+                    <Link className="text-white" href="#">
+                        Login
+                    </Link>
                 </NavbarItem>
             </NavbarContent>
+            <NavbarMenu className="px-5 py-10">
+                <NavbarMenuItem>
+                    <Link href="/tema-filter" className="text-black text-xl font-semibold pb-6 border-b-2 border-[#3A4C5A] w-full">
+                        Tema & Filter IG
+                    </Link>
+                </NavbarMenuItem>
+                <NavbarMenuItem>
+                    <Link href="/" className="text-black text-xl font-semibold pb-6 border-b-2 border-[#3A4C5A] w-full">
+                        Home
+                    </Link>
+                </NavbarMenuItem>
+                <NavbarMenuItem>
+                    <Link href="/kontak" className="text-black text-xl font-semibold pb-6 border-b-2 border-[#3A4C5A] w-full">
+                        Kontak
+                    </Link>
+                </NavbarMenuItem>
+            </NavbarMenu>
         </Navbar>
     );
-}
+};
 
 export default Navbars;

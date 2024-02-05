@@ -133,7 +133,7 @@ const SectionTwo = () => {
 
     return (
         <div className="p-10">
-            <h1 className="mt-10 text-center text-4xl font-bold">Pilih Paket Terbaikmu</h1>
+            <h1 className="xl:mt-10 lg:mt-10 mt-3 text-center xl:text-4xl lg:text-4xl text-2xl font-bold">Pilih Paket Terbaikmu</h1>
             <div className="flex gap-2 items-center flex justify-center mt-[2.5rem]">
                 {list.map((item, index) => (
                     <Button size="lg" radius="sm"  className={selectedId === item.id ? "bg-[#035B7D] text-white" : "bg-white text-[#035B7D]"} onClick={() => handleButtonClick(item.id)}>
@@ -142,13 +142,13 @@ const SectionTwo = () => {
                 ))}
             </div>
 
-            <div className="grid grid-cols-2 pt-16">
+            <div className="grid xl:grid-cols-2 lg:grid-cols-2 grid-cols-1 pt-16">
                 <div>
                     <h1 className="text-lg font-semibold">Pilihlah Design Terbaikmu !</h1>
                 </div>
             </div>
 
-            <div className="grid grid-cols-4 gap-5 pt-10">
+            <div className="grid xl:grid-cols-4 lg:grid-cols-4 grid-cols-1 gap-5 xl:pt-10 lg:pt-10 pt-6">
                 {listCard.map((item, index) => (
                 <div>
                     <div>
