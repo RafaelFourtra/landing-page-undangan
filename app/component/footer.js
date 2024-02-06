@@ -51,21 +51,21 @@ const Footer = () => {
                     </h1>
                     <div className="xl:grid lg:grid xl:grid-cols-3 lg:grid-cols-3 pt-4 xl:w-6/12 lg:w-8/12 w-6/12 flex mx-auto">
                         <div>
-                            <div class="xl:w-12 xl:h-12 lg:w-10 lg:h-10 w-12 h-12 mx-2 rounded-full flex items-center justify-center bg-[#D9D9D9]">
+                            <div className="xl:w-12 xl:h-12 lg:w-10 lg:h-10 w-12 h-12 mx-2 rounded-full flex items-center justify-center bg-[#D9D9D9]">
                                 <h1 className="xl:text-2xl lg:text-xl text-2xl text-[#549AE2] font-bold">
                                     <FaWhatsapp />
                                 </h1>
                             </div>
                         </div>
                         <div>
-                            <div class="xl:w-12 xl:h-12 lg:w-10 lg:h-10 w-12 h-12 mx-2 rounded-full flex items-center justify-center bg-[#D9D9D9]">
+                            <div className="xl:w-12 xl:h-12 lg:w-10 lg:h-10 w-12 h-12 mx-2 rounded-full flex items-center justify-center bg-[#D9D9D9]">
                                 <h1 className="xl:text-2xl lg:text-xl text-2xl text-[#549AE2] font-bold">
                                     <FaInstagram />
                                 </h1>
                             </div>
                         </div>
                         <div>
-                            <div class="xl:w-12 xl:h-12 lg:w-10 lg:h-10 w-12 h-12 mx-2 rounded-full flex items-center justify-center bg-[#D9D9D9]">
+                            <div className="xl:w-12 xl:h-12 lg:w-10 lg:h-10 w-12 h-12 mx-2 rounded-full flex items-center justify-center bg-[#D9D9D9]">
                                 <h1 className="xl:text-2xl lg:text-xl text-2xl text-[#549AE2] font-bold">
                                     <FaFacebookF />
                                 </h1>
