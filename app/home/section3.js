@@ -26,7 +26,7 @@ const SectionThree = () => {
 
     return (
         <>
-            <div className={`container mx-auto xl:px-10 lg:px-10 px-2 mt-20 xl:mt-20 lg:mt-20`}>
+            <div className={`container mx-auto p-10 py-15 xl:mt-20 lg:mt-20 mt-7`}>
                 <div className="xl:grid lg:grid xl:grid-cols-2 lg:grid-cols-2 flex grid-cols-1 flex-col-reverse">
                     <div className='p-4'>
                         <div className='flex items-center justify-center'>
@@ -40,7 +40,7 @@ const SectionThree = () => {
 
                                 {list.map((item, index) => (
                                     <div>
-                                        <h5 className='xl:mt-4 lg:mt-2 ml-3 flex items-center'><span className={`${styles.iconColor} xl:text-2xl lg:text-lg`}><FaCircleCheck /></span><span className={`ml-5 text-[1.3rem] font-medium`}>{item.title}</span> </h5>
+                                        <h5 className='xl:mt-4 lg:mt-2 ml-1 xl:ml-3 lg:ml-3 flex items-center'><span className={`${styles.iconColor} xl:text-2xl lg:text-lg`}><FaCircleCheck /></span><span className={`ml-5 text-[1.3rem] font-medium`}>{item.title}</span> </h5>
                                         <p className={`${styles.description} xl:mt-3 lg:mt-1 ml-14 xl:leading-[1.6rem] lg:leading-[1.3rem] text-base`}>{item.description}</p>
                                     </div>
                                 ))}
