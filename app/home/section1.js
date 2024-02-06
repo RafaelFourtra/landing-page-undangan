@@ -6,9 +6,9 @@ import { Button } from "@nextui-org/react";
 
 const SectionOne = () => {
     return (
-        <div className={`${styles.section1} container mx-auto px-5 py-10 sm:grid sm:grid-cols-1 md:grid-cols-1 lg:grid lg:grid-cols-2 xl:grid xl:grid-cols-2`}>
+        <div className={`${styles.section1} container mx-auto px-5 py-28 sm:grid sm:grid-cols-1 md:grid-cols-1 lg:grid lg:grid-cols-2 xl:grid xl:grid-cols-2`}>
             <div className='p-4 flex items-center justify-center'>
-                <div className='lg:text-left xl:text-left text-center '>
+                <div className='lg:text-left xl:text-left xl:ml-28 text-center '>
                     <h1 className={`${styles.title} text-2xl lg:text-[3rem] lg:leading-[4rem] leading-[1] font-black mb-2 lg:mb-0`}>
                         Buat Undangan Online
                         <br className="hidden lg:inline" /> {/* Hanya tampil di atas lg (large) */}
@@ -26,7 +26,7 @@ const SectionOne = () => {
                 </div>
             </div>
             <div>
-                <img className='block mx-auto w-full p-5 lg:w-full' src="https://res.cloudinary.com/practicaldev/image/fetch/s--l4Ne9mZQ--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_100%2Cw_880/https://res.cloudinary.com/practicaldev/image/fetch/s--1uwa-GMK--/c_limit%252Cf_auto%252Cfl_progressive%252Cq_auto%252Cw_350/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/pbqud1ltn46amch1q6jy.jpg" />
+                <img className='block mx-auto w-3/5 xl:w-3/5 lg:w-5/6' src="/image/home/section1/section1Home.png" />
             </div>
         </div>
     )

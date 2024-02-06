@@ -36,7 +36,7 @@ export default function App() {
           <h1 className='font-semibold mb-3 text-xl'>FAQs</h1>
           <h1 className='font-bold mb-3 text-3xl'>Punya Pertanyaan Lain?</h1>
           <h1 className='font-base w-5/6 mb-5 text-lg lg:text-base'>Tailwind lets you conditionally apply utility classes in different states using variant modifiers.</h1>
-          <Button className="bg-[#035B7D] font-semibold text-white" radius="full" size="md">Konsultasi Sekarang</Button>
+          <Button className="bg-[#307674] font-semibold text-white" radius="full" size="md">Konsultasi Sekarang</Button>
         </div>
         <div className='col-span-3 xl:pl-28 lg:pl-0 flex items-center justify-center'>
           <Accordion variant='bordered' activeItem={activeItem} onItemChange={(item) => setActiveItem(item)}>

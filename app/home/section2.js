@@ -30,13 +30,15 @@ const SectionTwo = () => {
 
   return (
     <>
-      <div className="grid grid-cols-1 xl:mt-12 lg:mt-10">
+    <div className="container mx-auto">
+      <div className="grid grid-cols-1 px-10 xl:mt-12 lg:mt-12">
         <div className="lg:container lg:w-26">
-          <h1 className="text-center xl:text-3xl lg:text-3xl xl:p-0 lg:p-0 text-md py-7 font-extrabold">Semua yang kamu perlukan untuk bantu wujudkan Momen Impian</h1>
+          <h1 className="text-center xl:text-3xl lg:text-3xl xl:p-0 lg:p-0 text-3xl py-7 font-extrabold">Semua yang kamu perlukan untuk bantu wujudkan Momen Impian !</h1>
         </div>
       </div>
+    </div>
 
-      <div className="container mx-auto px-4 xl:mt-12 lg:mt-10">
+      <div className="container mx-auto p-10 py-15 xl:mt-6 lg:mt-6">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
           {list.map((item, index) => (
             <Card className={`${styles.backgroundCard} py-4 shadow-md`}>

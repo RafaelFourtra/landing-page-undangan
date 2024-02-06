@@ -23,7 +23,7 @@ const SectionFour = () => {
                     <div>
                         <img src="/image/home/section4/SectionFourImage.png" className="w-96 py-9 xl:block lg:block hidden" alt="me" />
                         <h1 className="text-4xl font-black mb-4 lg:mb-6">Kenapa Kami Jadi Pilihan Yang Tepat?</h1>
-                        <h3 className="text-[#688297] text-base">Kami selalu memberikan pelayanan & harga terbaik dalam pasar dan menyediakan transaksi 24 jam.</h3>
+                        <h3 className="text-[#221C35] text-base">Kami selalu memberikan pelayanan & harga terbaik dalam pasar dan menyediakan transaksi 24 jam.</h3>
                         <Button className={`${styles.buttonstyles} my-3`} radius="full" size="md">Mulai Sekarang <FaArrowRight /></Button>
                     </div>
                 </div>
