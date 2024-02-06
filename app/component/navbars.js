@@ -32,12 +32,12 @@ const Navbars = () => {
 
             <NavbarContent className="hidden sm:flex gap-4" justify="left">
                 <NavbarItem>
-                    <Link href="/" className={isActiveOne ? "text-[#549ae2]" : "text-black"}>
+                    <Link href="/" className={isActiveOne ? "text-[#307674]" : "text-black"}>
                         Home
                     </Link>
                 </NavbarItem>
                 <NavbarItem>
-                    <Link href="/tema-filter" className={isActiveTwo ? "text-[#549ae2]" : "text-black"}>
+                    <Link href="/tema-filter" className={isActiveTwo ? "text-[#307674]" : "text-black"}>
                         Tema & Filter IG
                     </Link>
                 </NavbarItem>
@@ -51,7 +51,7 @@ const Navbars = () => {
             <NavbarContent className="w-fit" justify="end">
                 <FiShoppingCart className="text-xl cursor-pointer" />
                 <div className="border border-[#3A4C5A] rounded-full h-3/4"></div>
-                <NavbarItem className="bg-[#035B7D] p-2 px-8 rounded-full">
+                <NavbarItem className="bg-[#307674] p-2 px-8 rounded-full">
                     <Link className="text-white" href="#">
                         Login
                     </Link>
