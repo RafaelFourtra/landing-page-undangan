@@ -155,7 +155,7 @@ const SectionTwo = () => {
                         <img className="rounded-t-lg" src={item.image} />
                         <div className="p-3 px-5 bg-[#E7F0FF] rounded-b-lg">
                             <h1 className="font-semibold text-lg">{item.title}</h1>
-                            <div class="grid xl:grid-cols-2 lg:grid-cols-1 gap-2">
+                            <div className="grid xl:grid-cols-2 lg:grid-cols-1 gap-2">
                                 <div>
                                 <Button className="w-full bg-[#035B7D] text-white my-2 mt-5" radius='xl:sm lg:full' size="xl:md lg:sm">Preview Tema <FaArrowRight /></Button>
                                 </div>
