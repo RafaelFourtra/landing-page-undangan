@@ -1,9 +1,11 @@
 "use client"
 import React from "react";
-import { Navbar, NavbarBrand, NavbarContent, NavbarItem, Link, Button, NavbarMenuToggle, NavbarMenu, NavbarMenuItem, Image } from "@nextui-org/react";
+import { Navbar, NavbarBrand, NavbarContent, NavbarItem, Button, NavbarMenuToggle, NavbarMenu, NavbarMenuItem, Image } from "@nextui-org/react";
 import { usePathname, useRouter } from 'next/navigation';
 import { FiShoppingCart } from "react-icons/fi";
 import Styles from "./css/navbarCss.module.css";
+import Link from 'next/link'
+
 
 const Navbars = () => {
     const pathname = usePathname();
