@@ -16,7 +16,7 @@ const SectionOne = () => {
     <div
       className={`${styles.section1} container mx-auto px-5 py-28 sm:grid sm:grid-cols-1 md:grid-cols-1 lg:grid lg:grid-cols-2 xl:grid xl:grid-cols-2`}
     >
-      <div className="p-4 flex items-center justify-center">
+      <div className="p-4 flex items-center justify-center xl:mt-20">
         <div className="lg:text-left xl:text-left xl:ml-28 text-center ">
           <h1
             className={`${styles.title} text-2xl lg:text-[3rem] lg:leading-[4rem] leading-[1] font-black mb-2 lg:mb-0`}
@@ -55,7 +55,7 @@ const SectionOne = () => {
           </Button>
         </div>
       </div>
-      <div>
+      <div className="xl:mt-20 lg:mt-32">
         <img
           className="block mx-auto w-3/5 xl:w-6/5 "
           src="/image/home/section1/section-1.png"
