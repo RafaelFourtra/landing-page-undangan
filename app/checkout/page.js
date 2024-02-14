@@ -5,9 +5,9 @@ import PagesThree from "./pagesThree"
 const Checkout = () => {
     return (
         <div>
-            {/* <SectionOne /> */}
+            <SectionOne />
             {/* <PagesTwo /> */}
-            <PagesThree />
+            {/* <PagesThree /> */}
         </div>
     )
 }
