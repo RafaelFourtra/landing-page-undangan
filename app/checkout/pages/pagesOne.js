@@ -1,17 +1,27 @@
 "use client"
-import React from "react"
+
+import React, { useEffect, useState } from "react";
 import { Input } from "@nextui-org/react";
 import { Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Button } from "@nextui-org/react";
 import { FaCaretDown } from "react-icons/fa";
 
-const PagesOne = () => {
-    const [selectedKeys, setSelectedKeys] = React.useState(new Set(["text"]));
+const PagesOne = ({ parentCallback }) => {
+    const [inputValue, setInputValue] = useState({
+        input1: "",
+        input2: "",
+        input3: "",
+        input4: ""
+    });
 
-    const selectedValue = React.useMemo(
-        () => Array.from(selectedKeys).join(", ").replaceAll("_", " "),
-        [selectedKeys]
-    );
-
+    const handleInputChange = (event) => {
+        const { name, value } = event.target;
+        setInputValue({
+            ...inputValue,
+            [name]: value
+        });
+        // Mengirim status input ke parent
+        parentCallback(inputValue);
+    };
 
     return (
         <div>
@@ -25,6 +35,8 @@ const PagesOne = () => {
                             type="text"
                             label="Mempelai Pria"
                             variant="underlined"
+                            value={inputValue.input1}
+                            onChange={handleInputChange}
                         />
                     </div>
                     <div>
@@ -32,6 +44,8 @@ const PagesOne = () => {
                             type="text"
                             label="Mempelai Wanita"
                             variant="underlined"
+                            value={inputValue.input2}
+                            onChange={handleInputChange}
                         />
                     </div>
                 </div>
@@ -41,6 +55,8 @@ const PagesOne = () => {
                             type="text"
                             label="Judul Undangan"
                             variant="underlined"
+                            value={inputValue.input3}
+                            onChange={handleInputChange}
                         />
                     </div>
                     <div>
@@ -48,6 +64,8 @@ const PagesOne = () => {
                             type="text"
                             label="URL Undangan Website"
                             variant="underlined"
+                            value={inputValue.input4}
+                            onChange={handleInputChange}
                         />
                     </div>
                 </div>
@@ -59,30 +77,6 @@ const PagesOne = () => {
                 variant="underlined"
             />
             <h1 className="text-sm font-light my-4 text-slate-600">Jangan khawatir kamu masih bisa mengubah data di Smart Dashboard!</h1>
-            <h1 className="text-lg font-semibold mt-8">Sudah sejauh mana persiapan yang kamu lakukan?</h1>
-            <Dropdown>
-                <DropdownTrigger className="w-full">
-                    <Button radius="full" variant="bordered" className="capitalize flex justify-between mt-4 mb-6">
-                        {selectedValue}
-                        <FaCaretDown />
-                    </Button>
-                </DropdownTrigger>
-                <DropdownMenu
-                    aria-label="Single selection example"
-                    variant="flat"
-                    disallowEmptySelection
-                    selectionMode="single"
-                    selectedKeys={selectedKeys}
-                    defaultSelectedKeys={["baru lamaran dan sedang melihat lihat"]}
-                    onSelectionChange={setSelectedKeys}
-                    className="w-full"
-                >
-                    <DropdownItem key="belum lamaran">Belum lamaran</DropdownItem>
-                    <DropdownItem key="baru lamaran dan sedang melihat lihat">Baru lamaran dan sedang melihat lihat</DropdownItem>
-                    <DropdownItem key="dalam proses persiapan">Dalam proses persiapan</DropdownItem>
-                    <DropdownItem key="hampir selesai, tinggal beberapa hal lagi">Hampir selesai, tinggal beberapa hal lagi</DropdownItem>
-                </DropdownMenu>
-            </Dropdown>
             <h1 className="text-right text-md font-normal my-4 text-slate-600">Semua data harus dilengkapi.</h1>
         </div>
     )

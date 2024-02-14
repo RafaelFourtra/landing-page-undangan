@@ -51,7 +51,7 @@ const Navbars = () => {
             </NavbarContent>
 
             <NavbarContent className="w-fit" justify="end">
-                <FiShoppingCart className="text-xl cursor-pointer" />
+                <FiShoppingCart className="text-xl cursor-pointer" onClick={(e) => handleClick(e, '/cart')} />
                 <div className="border border-[#3A4C5A] rounded-full h-3/4"></div>
                 <NavbarItem className="bg-[#307674] p-2 px-8 rounded-full">
                     <Link className="text-white" href="#">
