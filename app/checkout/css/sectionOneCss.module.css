@@ -1,0 +1,14 @@
+.background {
+    background-image: url('https://katsudoto.id/media/pictures/happy-couple-3-min.jpg');
+    object-fit: cover;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.overflow {
+    overflow-y: scroll;
+    height: 50%;
+}
+.overflow::-webkit-scrollbar {
+    display: none;
+}
