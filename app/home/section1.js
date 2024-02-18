@@ -57,7 +57,7 @@ const SectionOne = () => {
       </div>
       <div>
         <img
-          className="block mx-auto w-3/5 xl:w-6/5 "
+          className="block mx-auto  w-3/4"
           src="/image/home/section1/section-1.png"
         />
       </div>
