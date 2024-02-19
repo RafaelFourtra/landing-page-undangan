@@ -6,9 +6,5 @@
 }
 
 .overflow {
-    overflow-y: scroll;
-    height: 50%;
-}
-.overflow::-webkit-scrollbar {
-    display: none;
+
 }

@@ -18,19 +18,46 @@ const SectionOne = () => {
 
   const router = useRouter();
 
-  const [selectedId, setSelectedId] = useState(1);
-  const [isValid, setIsValid] = useState(false);
+  const [selectedMenuOne, setSelectedMenuOne] = useState();
+  const [selectedMenuTwo, setSelectedMenuTwo] = useState('b');
+  const [selectedMenuThree, setSelectedMenuThree] = useState('c');
 
-  // Input Value from Child Page
   const [inputValuesOne, setInputValuesOne] = useState();
-
-  const handleSubmit = () => {};
+  const [inputValuesTwo, setInputValuesTwo] = useState();
+  const [inputValuesThree, setInputValuesThree] = useState();
 
   const handleButtonClick = () => {
-    console.log(inputValuesOne);
-    // var sid = selectedId;
-    // var incrementSelectedId = sid + 1;
-    // setSelectedId(incrementSelectedId);
+    var isValidOne = "";
+    var isValidTwo = "";
+    var isValidThree = "";
+
+    if (inputValuesOne && inputValuesOne.isValid !== false) {
+      isValidOne = "a";
+    }
+    if (inputValuesOne && isValidOne == "a") {
+      setSelectedMenuOne(isValidOne);
+      setSelectedMenuTwo("");
+      setSelectedMenuThree("c");
+      isValidOne = "";
+    }
+
+    if (inputValuesTwo && inputValuesTwo.isValid !== false) {
+      isValidTwo = "b";
+    }
+    if (inputValuesTwo && isValidTwo == "b") {
+      setSelectedMenuOne("a")
+      setSelectedMenuTwo(isValidTwo);
+      setSelectedMenuThree("");
+      isValidTwo = "";
+    }
+
+    if (inputValuesThree && inputValuesThree.isValid !== false) {
+      isValidThree = "c";
+    }
+    if (inputValuesThree && isValidThree == "c") {
+      setSelectedMenuThree(isValidThree);
+      isValidThree = "c";
+    }
   };
 
   return (
@@ -67,39 +94,6 @@ const SectionOne = () => {
               </React.Fragment>
             ))}
           </div>
-
-          <div className={`${Styles.overflow} w-3/4 mt-14 block mx-auto`}>
-            <div className={`${selectedId === 1 ? "" : "hidden"}`}>
-              <PagesOne
-                parentCallback={(childData) => setInputValuesOne(childData)}
-              />
-            </div>
-            <div className={`${selectedId === 2 ? "" : "hidden"}`}>
-              <PagesTwo />
-            </div>
-            <div className={`${selectedId === 3 ? "" : "hidden"}`}>
-              <PagesFour />
-            </div>
-          </div>
-          <div className="w-3/4 block mx-auto">
-            {selectedId === 3 ? (
-              <Button
-                radius="full"
-                className="bg-black text-white w-full py-8 text-xl font-semibold my-5 mt-10"
-                onClick={() => handleSubmit()}
-              >
-                Submit
-              </Button>
-            ) : (
-              <Button
-                radius="full"
-                className="bg-black text-white w-full py-8 text-xl font-semibold my-5 mt-10"
-                onClick={() => handleButtonClick()}
-              >
-                Lanjut
-              </Button>
-            )}
-          </div>
         </div>
       </div>
     </div>
@@ -107,3 +101,48 @@ const SectionOne = () => {
 };
 
 export default SectionOne;
+{/* <div className={`${Styles.overflow} w-3/4 mt-14 block mx-auto`}>
+<div className={`${selectedMenuOne === 'a' ? "hidden" : ""}`}>
+  <PagesOne
+    parentCallback={(childData) => {
+      setInputValuesOne(childData);
+      handleButtonClick();
+    }}
+  />
+</div>
+<div className={`${selectedMenuTwo === 'b' ? "hidden" : ""}`}>
+  <PagesTwo
+    parentCallback={(childData) => {
+      setInputValuesTwo(childData);
+      handleButtonClick();
+    }}
+  />
+</div>
+<div className={`${selectedMenuThree === 'c' ? "hidden" : ""}`}>
+  <PagesFour
+    parentCallback={(childData) => {
+      setInputValuesThree(childData);
+      handleButtonClick();
+    }}
+  />
+</div>
+</div>
+<div className="w-3/4 block mx-auto">
+{/* {selectedId === 3 ? (
+  <Button
+    radius="full"
+    className="bg-black text-white w-full py-8 text-xl font-semibold my-5 mt-10"
+    onClick={() => handleSubmit()}
+  >
+    Submit
+  </Button>
+) : (
+  <Button
+    radius="full"
+    className="bg-black text-white w-full py-8 text-xl font-semibold my-5 mt-10"
+    onClick={() => handleButtonClick()}
+  >
+    Lanjut
+  </Button>
+)} 
+</div>*/}
