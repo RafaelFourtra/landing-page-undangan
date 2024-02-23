@@ -26,7 +26,7 @@ const SectionTwo = () => {
     },
     {
       title: "Filter Instagram",
-      img: "/image/home/section2/card-instagram-filter.png",
+      img: "/image/home/section2/card-instagram-filter-grayscale.png",
       description:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     },
