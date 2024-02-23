@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Button } from "@nextui-org/react";
+import Link from 'next/link'
 import { FaArrowRight } from "react-icons/fa6";
 import { FaCircleCheck } from "react-icons/fa6";
 import { FaWhatsapp } from "react-icons/fa6";
@@ -13,7 +14,27 @@ import {
   CardFooter,
 } from "@nextui-org/react";
 
+
 const SectionSix = () => {
+  // Memasukan data ke Local Storage
+  const [idToAdd, setIdToAdd] = useState('');
+  // Fungsi untuk menambahkan ID ke dalam array dan menyimpannya di local storage
+  const savePaketIdToLocalStorage = (id) => {
+    // Mendapatkan array existingData dari local storage atau menggunakan array kosong jika belum ada
+    const existingData = JSON.parse(window.localStorage.getItem('idArray')) || [];
+    // Menambahkan id baru ke dalam array
+    const updatedData = [...existingData, id];
+    // Menyimpan array yang sudah diupdate ke dalam local storage
+    window.localStorage.setItem('idArray', JSON.stringify(updatedData));
+    alert(`ID ${id} berhasil ditambahkan!`);
+  };
+
+  // const savePaketIdToLocalStorage = (paketId) => {
+  //   window.localStorage.setItem("idPaket", paketId);
+  //   alert(`Id ${paketId} Sudah Tersimpan!`);
+  //   router.push('/cart')
+  // };
+
   const [isInvisible, setIsInvisible] = useState(false);
   const list = [
     {
@@ -106,27 +127,24 @@ const SectionSix = () => {
           <div className="lg:col-span-1"></div>
           <div className="lg:col-span-10 col-span-12">
             <div
-              className={`xl:grid lg:grid ${
-                selectedId == 1
-                  ? "lg:grid-cols-3 lg:gap--3"
-                  : selectedId == 2
+              className={`xl:grid lg:grid ${selectedId == 1
+                ? "lg:grid-cols-3 lg:gap--3"
+                : selectedId == 2
                   ? "lg:grid-cols-4 lg:gap-3"
                   : selectedId == 1
-                  ? "lg:grid-cols-1"
-                  : ""
-              }`}
+                    ? "lg:grid-cols-1"
+                    : ""
+                }`}
             >
               {listCard.map((item, index) => (
                 <Card
-                  className={`py-4 shadow-md xl:w-[338px] lg:w-[232px] w-full ${
-                    selectedId == 1 ? "lg:mx-auto" : ""
-                  } ${
-                    selectedId == 2
+                  className={`py-4 shadow-md xl:w-[338px] lg:w-[232px] w-full ${selectedId == 1 ? "lg:mx-auto" : ""
+                    } ${selectedId == 2
                       ? item.id % 2 === 0
                         ? "ml-auto lg:col-span-2"
                         : "lg:col-span-2"
                       : ""
-                  } ${selectedId == 3 ? "mx-auto" : ""}`}
+                    } ${selectedId == 3 ? "mx-auto" : ""}`}
                 >
                   <CardHeader className="bg-[#FBF8F1] px-5 py-5">
                     <div>
@@ -235,8 +253,10 @@ const SectionSix = () => {
                       className={`mt-4 bg-[#307674] w-full xl:w-80 text-white`}
                       radius="full"
                       size="md"
+                      onClick={() => savePaketIdToLocalStorage(item.id)}
                     >
-                      Pilih Paket <FaArrowRight />
+                      Pilih Paket
+                      <FaArrowRight />
                     </Button>
                     <Button
                       className={`mt-3 bg-[#C4DBDA] w-full xl:w-80`}
