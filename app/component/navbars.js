@@ -1,7 +1,8 @@
 "use client"
 import React from "react";
-import { Navbar, NavbarBrand, NavbarContent, NavbarItem, Button, NavbarMenuToggle, NavbarMenu, NavbarMenuItem, Image } from "@nextui-org/react";
+import { Badge, Navbar, NavbarBrand, NavbarContent, NavbarItem, Button, NavbarMenuToggle, NavbarMenu, NavbarMenuItem, Image } from "@nextui-org/react";
 import { usePathname, useRouter } from 'next/navigation';
+import { useEffect, useState } from 'react'
 import { FiShoppingCart } from "react-icons/fi";
 import Styles from "./css/navbarCss.module.css";
 import Link from 'next/link'
@@ -18,6 +19,18 @@ const Navbars = () => {
             router.push(path)
         }
     }
+
+    // Check jika ada item masuk ke cart
+    const [idArray, setIdArray] = useState([]);
+    useEffect(() => {
+        const storedIdArray = JSON.parse(window.localStorage.getItem('idArray')) || [];
+        setIdArray(storedIdArray);
+    }, []);
+
+    const [totalItemInsideCart, setTotalItemInsideCart] = useState(0);
+    useEffect(() => {
+        setTotalItemInsideCart(idArray.length);
+    }, [idArray]);
 
     return (
         <Navbar className={`p-2 ${Styles.navbar} bg-white`}>
@@ -51,7 +64,13 @@ const Navbars = () => {
             </NavbarContent>
 
             <NavbarContent className="w-fit" justify="end">
-                <FiShoppingCart className="text-xl cursor-pointer" onClick={(e) => handleClick(e, '/cart')} />
+                {idArray.length > 0 ? (
+                    <Badge size="md" content={totalItemInsideCart}>
+                        <FiShoppingCart className="text-xl cursor-pointer" onClick={(e) => handleClick(e, '/cart')} />
+                    </Badge>
+                ) : (
+                    <FiShoppingCart className="text-xl cursor-pointer" onClick={(e) => handleClick(e, '/cart')} />
+                )}
                 <div className="border border-[#3A4C5A] rounded-full h-3/4"></div>
                 <NavbarItem className="bg-[#307674] p-2 px-8 rounded-full">
                     <Link className="text-white" href="#">
