@@ -2,10 +2,10 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import Styles from "./css/sectionOneCss.module.css";
-import { Button } from "@nextui-org/react";
 import { FaTimes } from "react-icons/fa";
-import { Input } from "@nextui-org/react";
+import { FaCheck, FaArrowLeftLong } from "react-icons/fa6";
+import { Button, Input } from "@nextui-org/react";
+import Styles from "./css/sectionOneCss.module.css";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 
@@ -14,6 +14,8 @@ const Checkout = () => {
 
   const [selectedMenu, setSelectedMenu] = useState(0);
   const [formValues, setFormValues] = useState({});
+
+  const [isNextButtonClicked, setIsNextButtonClicked] = useState(false);
 
   const validationSchemaOne = Yup.object().shape({
     mempelaipria:
@@ -51,16 +53,22 @@ const Checkout = () => {
   });
 
   const validationSchemaThree = Yup.object().shape({
-    email:
-      selectedMenu === 1
-        ? Yup.string()
-            .email("Invalid email address")
-            .required("Email is required")
+    gmaps:
+      selectedMenu === 2
+        ? Yup.string().required("Gmaps is required")
         : Yup.string(),
-    whatsapp:
-      selectedMenu === 1
-        ? Yup.number().required("WhatsApp is required")
-        : Yup.number(),
+    alamat:
+      selectedMenu === 2
+        ? Yup.string().required("Alamat is required")
+        : Yup.string(),
+    gedung:
+      selectedMenu === 2
+        ? Yup.string().required("Gedung is required")
+        : Yup.string(),
+    kota:
+      selectedMenu === 2
+        ? Yup.string().required("Kota is required")
+        : Yup.string(),
   });
 
   const formik = useFormik({
@@ -70,7 +78,9 @@ const Checkout = () => {
         ? validationSchemaOne
         : selectedMenu === 1
         ? validationSchemaTwo
-        : undefined,
+        : selectedMenu === 2
+        ? validationSchemaThree
+        : "",
   });
 
   const handleInputChange = (event) => {
@@ -96,9 +106,12 @@ const Checkout = () => {
           ? setSelectedMenu(1)
           : selectedMenu === 1
           ? setSelectedMenu(2)
-          : "";
+          : selectedMenu === 2
+          ? setSelectedMenu(3)
+          : '';
+        setIsNextButtonClicked(false);
       } else {
-        console.log("Validation Errors:", errors);
+        setIsNextButtonClicked(true);
       }
     });
   };
@@ -120,6 +133,15 @@ const Checkout = () => {
             className="absolute right-7 top-5 text-xl text-slate-400 cursor-pointer"
             onClick={() => router.back()}
           />
+          {selectedMenu != 0 ? (
+            <FaArrowLeftLong
+              className="absolute top-[70px] ml-20 text-xl text-slate-400 cursor-pointer"
+              onClick={() => setSelectedMenu(selectedMenu - 1)}
+            />
+          ) : (
+            ""
+          )}
+
           <div className="grid xl:grid-cols-5 lg:grid-cols-7 grid-cols-1 w-3/4 mt-14 py-15 block mx-auto">
             {itemList.map((step, index) => (
               <React.Fragment key={index}>
@@ -127,7 +149,23 @@ const Checkout = () => {
                   <div className="xl:flex lg:flex xl:items-center lg:items-center xl:justify-center lg:justify-center">
                     <div className="w-7 h-7 rounded-full flex items-center justify-center bg-red-500 xl:mb-0 lg:mb-0 mb-10">
                       <h1 className="text-xl text-white font-semibold">
-                        {index + 1}
+                        {selectedMenu == 2 ? (
+                          step == "Mulai" ? (
+                            <FaCheck />
+                          ) : (
+                            index + 1
+                          )
+                        ) : selectedMenu == 3 ? (
+                          step == "Mulai" ? (
+                            <FaCheck />
+                          ) : step == "Detail Pernikahan" ? (
+                            <FaCheck />
+                          ) : (
+                            index + 1
+                          )
+                        ) : (
+                          index + 1
+                        )}
                       </h1>
                     </div>
                   </div>
@@ -158,19 +196,41 @@ const Checkout = () => {
                       <div>
                         <Input
                           type="text"
-                          placeholder="Mempelai Pria"
+                          label="Mempelai Pria"
                           variant="underlined"
                           name="mempelaipria"
+                          value={formValues.mempelaipria}
                           onChange={handleInputChange}
+                          isInvalid={
+                            isNextButtonClicked && formik.errors.mempelaipria
+                              ? true
+                              : false
+                          }
+                          errorMessage={
+                            isNextButtonClicked && formik.errors.mempelaipria
+                              ? formik.errors.mempelaipria
+                              : ""
+                          }
                         />
                       </div>
                       <div>
                         <Input
                           type="text"
-                          placeholder="Mempelai Wanita"
+                          label="Mempelai Wanita"
                           variant="underlined"
                           name="mempelaiwanita"
+                          value={formValues.mempelaiwanita}
                           onChange={handleInputChange}
+                          isInvalid={
+                            isNextButtonClicked && formik.errors.mempelaiwanita
+                              ? true
+                              : false
+                          }
+                          errorMessage={
+                            isNextButtonClicked && formik.errors.mempelaiwanita
+                              ? formik.errors.mempelaiwanita
+                              : ""
+                          }
                         />
                       </div>
                     </div>
@@ -178,19 +238,41 @@ const Checkout = () => {
                       <div>
                         <Input
                           type="text"
-                          placeholder="Judul Undangan"
+                          label="Judul Undangan"
                           variant="underlined"
                           name="judulundangan"
+                          value={formValues.judulundangan}
                           onChange={handleInputChange}
+                          isInvalid={
+                            isNextButtonClicked && formik.errors.judulundangan
+                              ? true
+                              : false
+                          }
+                          errorMessage={
+                            isNextButtonClicked && formik.errors.judulundangan
+                              ? formik.errors.judulundangan
+                              : ""
+                          }
                         />
                       </div>
                       <div>
                         <Input
                           type="text"
-                          placeholder="URL Undangan Website"
+                          label="URL Undangan Website"
                           variant="underlined"
                           name="domain"
+                          value={formValues.domain}
                           onChange={handleInputChange}
+                          isInvalid={
+                            isNextButtonClicked && formik.errors.domain
+                              ? true
+                              : false
+                          }
+                          errorMessage={
+                            isNextButtonClicked && formik.errors.domain
+                              ? formik.errors.domain
+                              : ""
+                          }
                         />
                       </div>
                     </div>
@@ -201,7 +283,18 @@ const Checkout = () => {
                   <Input
                     type="date"
                     name="tanggalpernikahan"
+                    value={formValues.tanggalpernikahan}
                     onChange={handleInputChange}
+                    isInvalid={
+                      isNextButtonClicked && formik.errors.tanggalpernikahan
+                        ? true
+                        : false
+                    }
+                    errorMessage={
+                      isNextButtonClicked && formik.errors.tanggalpernikahan
+                        ? formik.errors.tanggalpernikahan
+                        : ""
+                    }
                   />
                   <h1 className="text-sm font-light my-4 text-slate-600">
                     Jangan khawatir kamu masih bisa mengubah data di Smart
@@ -224,14 +317,34 @@ const Checkout = () => {
                     label="Alamat Email"
                     name="email"
                     variant="underlined"
+                    value={formValues.email}
                     onChange={handleInputChange}
+                    isInvalid={
+                      isNextButtonClicked && formik.errors.email ? true : false
+                    }
+                    errorMessage={
+                      isNextButtonClicked && formik.errors.email
+                        ? formik.errors.email
+                        : ""
+                    }
                   />
                   <Input
                     type="text"
                     label="Nomor Whatsapp"
                     name="whatsapp"
                     variant="underlined"
+                    value={formValues.whatsapp}
                     onChange={handleInputChange}
+                    isInvalid={
+                      isNextButtonClicked && formik.errors.whatsapp
+                        ? true
+                        : false
+                    }
+                    errorMessage={
+                      isNextButtonClicked && formik.errors.whatsapp
+                        ? formik.errors.whatsapp
+                        : ""
+                    }
                   />
                   <h1 className="text-right text-md font-normal my-4 text-slate-600">
                     Semua data harus dilengkapi.
@@ -239,26 +352,83 @@ const Checkout = () => {
                 </div>
               ) : (
                 <div>
-                  <h1 className="text-4xl font-semibold">Informasi Akun</h1>
-                  <h1 className="text-lg font-base py-2">
-                    Tulis alamat email dan passwordmu atau daftar dengan akun
-                    Google untuk akses lebih cepat!
+                  <h1 className="text-4xl font-normal text-red-500 mb-3">
+                    Detail Pernikahan
                   </h1>
+                  <h3 className="text-xl font-normal text-black mb-5">
+                    Jika kamu belum yakin, kamu bisa masukan perkiraan terbaik
+                    kamu.
+                  </h3>
+                  <h3 className="text-xl font-semibold mb-5">
+                    Dimana lokasi pernikahan kamu diselenggarakan?
+                  </h3>
+                  <h3 className="text-lg font-light text-black mb-3">
+                    Masukan lokasi acara
+                  </h3>
                   <Input
                     type="text"
-                    label="Alamat Email"
+                    label="Link Google Maps"
+                    name="gmaps"
                     variant="underlined"
+                    value={formValues.gmaps}
                     onChange={handleInputChange}
+                    isInvalid={
+                      isNextButtonClicked && formik.errors.gmaps ? true : false
+                    }
+                    errorMessage={
+                      isNextButtonClicked && formik.errors.gmaps
+                        ? formik.errors.gmaps
+                        : ""
+                    }
                   />
                   <Input
-                    type="number"
-                    label="Nomor Whatsapp"
+                    type="text"
+                    label="Alamat"
+                    name="alamat"
                     variant="underlined"
+                    value={formValues.alamat}
                     onChange={handleInputChange}
+                    isInvalid={
+                      isNextButtonClicked && formik.errors.alamat ? true : false
+                    }
+                    errorMessage={
+                      isNextButtonClicked && formik.errors.alamat
+                        ? formik.errors.alamat
+                        : ""
+                    }
                   />
-                  <h1 className="text-right text-md font-normal my-4 text-slate-600">
-                    Semua data harus dilengkapi.
-                  </h1>
+                  <Input
+                    type="text"
+                    label="Gedung"
+                    name="gedung"
+                    variant="underlined"
+                    value={formValues.gedung}
+                    onChange={handleInputChange}
+                    isInvalid={
+                      isNextButtonClicked && formik.errors.gedung ? true : false
+                    }
+                    errorMessage={
+                      isNextButtonClicked && formik.errors.gedung
+                        ? formik.errors.gedung
+                        : ""
+                    }
+                  />
+                  <Input
+                    type="text"
+                    label="Kota"
+                    name="kota"
+                    variant="underlined"
+                    value={formValues.kota}
+                    onChange={handleInputChange}
+                    isInvalid={
+                      isNextButtonClicked && formik.errors.kota ? true : false
+                    }
+                    errorMessage={
+                      isNextButtonClicked && formik.errors.kota
+                        ? formik.errors.kota
+                        : ""
+                    }
+                  />
                 </div>
               )}
             </form>
@@ -276,6 +446,7 @@ const Checkout = () => {
               <Button
                 radius="full"
                 className="bg-black text-white w-full py-8 text-xl font-semibold my-5 mt-10"
+                onClick={handleNextButtonClick}
               >
                 Submit
               </Button>

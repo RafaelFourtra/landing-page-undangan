@@ -12,9 +12,9 @@ import { usePathname } from 'next/navigation';
 export default function RootLayout({ children }) {
   const pathname = usePathname();
 
-  const hideNavbar = pathname === '/checkout';
-  const hideFooter = pathname === '/checkout';
-  const hideFloatButton = pathname === '/checkout';
+  const hideNavbar = pathname === '/checkout' || pathname === '/register' || pathname === '/login';
+  const hideFooter = pathname === '/checkout' || pathname === '/register' || pathname === '/login';
+  const hideFloatButton = pathname === '/checkout' || pathname === '/register' || pathname === '/login';
 
   return (
     <html lang="en">
