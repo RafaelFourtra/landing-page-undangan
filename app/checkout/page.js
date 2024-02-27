@@ -8,14 +8,45 @@ import { Button, Input } from "@nextui-org/react";
 import Styles from "./css/sectionOneCss.module.css";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import axios from "axios";
 
 const Checkout = () => {
   const itemList = ["Mulai", "Detail Pernikahan", "Pembayaran"];
 
+  const [isLogin, setIsLogin] = useState(false);
   const [selectedMenu, setSelectedMenu] = useState(0);
   const [formValues, setFormValues] = useState({});
 
   const [isNextButtonClicked, setIsNextButtonClicked] = useState(false);
+
+  const router = useRouter();
+
+  useEffect(() => {
+    const userData = localStorage.getItem("user");
+    const userDataObject = JSON.parse(userData);
+
+    if (userDataObject) {
+      const value = userDataObject.id_user;
+
+      setFormValues((prevInputValue) => {
+        const updatedInputValue = { ...prevInputValue, user_id: value };
+        return updatedInputValue;
+      });
+      setIsLogin(true);
+      // const fetchData = async () => {
+      //   // try {
+      //   //   const response = await fetch("http://localhost:8000/api/check-order");
+      //   //   const result = await response.json();
+      //   // } catch (error) {
+      //   //   console.error("Error fetching data:", error);
+      //   // }
+      // };
+
+      // fetchData();
+    } else {
+      router.push("/login");
+    }
+  }, []);
 
   const validationSchemaOne = Yup.object().shape({
     mempelaipria:
@@ -39,20 +70,8 @@ const Checkout = () => {
         ? Yup.date().required("Tanggal Pernikahan is required")
         : Yup.date(),
   });
-  const validationSchemaTwo = Yup.object().shape({
-    email:
-      selectedMenu === 1
-        ? Yup.string()
-            .email("Invalid email address")
-            .required("Email is required")
-        : Yup.string(),
-    whatsapp:
-      selectedMenu === 1
-        ? Yup.number().required("WhatsApp is required")
-        : Yup.number(),
-  });
 
-  const validationSchemaThree = Yup.object().shape({
+  const validationSchemaTwo = Yup.object().shape({
     gmaps:
       selectedMenu === 2
         ? Yup.string().required("Gmaps is required")
@@ -78,8 +97,6 @@ const Checkout = () => {
         ? validationSchemaOne
         : selectedMenu === 1
         ? validationSchemaTwo
-        : selectedMenu === 2
-        ? validationSchemaThree
         : "",
   });
 
@@ -99,16 +116,39 @@ const Checkout = () => {
     formik.setFieldValue(name, value);
   };
 
-  const handleNextButtonClick = () => {
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await axios.post(
+        "http://localhost:8000/api/order",
+        formValues
+      );
+
+      if (response.status === 200) {
+        console.log("oke");
+      } else {
+        console.log("gt");
+        console.error("Gagal:", response);
+      }
+    } catch (error) {
+      // if (error.response.status == 400) {
+      // } else {
+      //   setIsError(true);
+      //   setErrorMessages(error.message);
+      // }
+    }
+  };
+
+  const handleNextButtonClick = (e) => {
     formik.validateForm().then((errors) => {
       if (Object.keys(errors).length === 0) {
-        selectedMenu === 0
-          ? setSelectedMenu(1)
-          : selectedMenu === 1
-          ? setSelectedMenu(2)
-          : selectedMenu === 2
-          ? setSelectedMenu(3)
-          : '';
+        if (selectedMenu === 0) {
+          setSelectedMenu(1);
+        } else if (selectedMenu === 1) {
+          setSelectedMenu(2);
+          handleSubmit(e);
+        } 
         setIsNextButtonClicked(false);
       } else {
         setIsNextButtonClicked(true);
@@ -300,52 +340,6 @@ const Checkout = () => {
                     Jangan khawatir kamu masih bisa mengubah data di Smart
                     Dashboard!
                   </h1>
-                  <h1 className="text-right text-md font-normal my-4 text-slate-600">
-                    Semua data harus dilengkapi.
-                  </h1>
-                </div>
-              ) : selectedMenu == 1 ? (
-                /* Slide 2 */
-                <div>
-                  <h1 className="text-4xl font-semibold">Informasi Akun</h1>
-                  <h1 className="text-lg font-base py-2">
-                    Tulis alamat email dan passwordmu atau daftar dengan akun
-                    Google untuk akses lebih cepat!
-                  </h1>
-                  <Input
-                    type="text"
-                    label="Alamat Email"
-                    name="email"
-                    variant="underlined"
-                    value={formValues.email}
-                    onChange={handleInputChange}
-                    isInvalid={
-                      isNextButtonClicked && formik.errors.email ? true : false
-                    }
-                    errorMessage={
-                      isNextButtonClicked && formik.errors.email
-                        ? formik.errors.email
-                        : ""
-                    }
-                  />
-                  <Input
-                    type="text"
-                    label="Nomor Whatsapp"
-                    name="whatsapp"
-                    variant="underlined"
-                    value={formValues.whatsapp}
-                    onChange={handleInputChange}
-                    isInvalid={
-                      isNextButtonClicked && formik.errors.whatsapp
-                        ? true
-                        : false
-                    }
-                    errorMessage={
-                      isNextButtonClicked && formik.errors.whatsapp
-                        ? formik.errors.whatsapp
-                        : ""
-                    }
-                  />
                   <h1 className="text-right text-md font-normal my-4 text-slate-600">
                     Semua data harus dilengkapi.
                   </h1>

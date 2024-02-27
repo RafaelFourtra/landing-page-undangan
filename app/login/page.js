@@ -1,12 +1,14 @@
 "use client";
 import React from "react";
 import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 import { Image, Button, Card, CardBody, Input } from "@nextui-org/react";
 import axios from "axios";
 const Login = () => {
   const [formData, setFormData] = useState({});
   const [isError, setIsError] = useState(false);
   const [errorMessages, setErrorMessages] = useState({});
+  const router = useRouter();
 
   const handleInputChange = (event) => {
     const { name } = event.target;
@@ -24,13 +26,20 @@ const Login = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:8000/api/users",
+        "http://localhost:8000/api/users/login",
         formData
       );
 
-      if (response.status === 201) {
-        console.log("ok");
-        console.log("Berhasil:", response);
+      if (response.status === 200) {
+        localStorage.setItem(
+          "user",
+          JSON.stringify({
+            id_user: response.data.data.id,
+            username: response.data.data.name,
+            token: response.data.data.token,
+          })
+        );
+        router.push("/");
       } else {
         console.log("gt");
         console.error("Gagal:", response);
