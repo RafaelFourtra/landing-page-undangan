@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import { useState, useEffect } from "react";
-import { useRouter } from 'next/router';
+import { useRouter } from "next/navigation";
 import { Image, Button, Card, CardBody, Input } from "@nextui-org/react";
 import axios from "axios";
 
@@ -32,7 +32,6 @@ const Register = () => {
       );
 
       if (response.status === 201) {
-        console.log("oke");
         router.push("/login");
       } else {
         console.log("gt");
