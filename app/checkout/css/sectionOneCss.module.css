@@ -7,12 +7,31 @@
 
 .overflow {
     overflow-y: scroll;
-    height: 60%;
+    height: 60% !important;
     padding-top: 0;
     padding-bottom: 0;
     margin-top: 1.5%;
     margin-bottom: 0;
 }
 .overflow::-webkit-scrollbar {
+    display: none;
+}
+
+.overflows {
+    overflow-y: scroll;
+    height: 100% !important;
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-top: 1.5%;
+    margin-bottom: 0;
+}
+.overflows::-webkit-scrollbar {
+    display: none;
+}
+
+.overflowHidden {
+    overflow: hidden !important;
+}
+.overflowHidden::-webkit-scrollbar{
     display: none;
 }

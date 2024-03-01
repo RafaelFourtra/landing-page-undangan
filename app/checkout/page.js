@@ -1,16 +1,24 @@
 "use client";
-import React from "react";
 import { useState, useEffect } from "react";
+import React from "react"
 import { useRouter } from "next/navigation";
 import { FaTimes } from "react-icons/fa";
 import { FaCheck, FaArrowLeftLong } from "react-icons/fa6";
 import { FiTrash2 } from "react-icons/fi";
-import { Button, Input, Divider, Card, CardHeader, CardBody, CardFooter, Image } from "@nextui-org/react";
+import { Divider, Card, CardHeader, CardBody, CardFooter, Image } from "@nextui-org/react";
 import Styles from "./css/sectionOneCss.module.css";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
 import Slider from 'react-slick';
+import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, useDisclosure, Checkbox, Input, Link } from "@nextui-org/react";
+import { Accordion, AccordionItem } from "@nextui-org/react";
+
+// Icon
+import { FaArrowRight } from "react-icons/fa";
+import { MdOutlineShoppingCartCheckout } from "react-icons/md";
+import { FiFilter } from "react-icons/fi";
+import { FaCircleCheck } from "react-icons/fa6"
 
 // Import CSS untuk react-slick
 import "slick-carousel/slick/slick.css";
@@ -256,6 +264,25 @@ const Checkout = () => {
     fetchData();
   }, []);
 
+  // Get paket data from DB
+  const [listPaketCard, setListPaketCard] = useState([]);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        // Get Paket
+        const responsePaket = await fetch("http://localhost:8000/api/paket")
+        const responseResult = await responsePaket.json()
+        setListPaketCard(responseResult.data)
+      } catch (error) {
+        console.error("Error fetching data:", error)
+      }
+    }
+
+    fetchData()
+  }, [])
+
+  const { isOpen, onOpen, onOpenChange } = useDisclosure();
+
   return (
     // <div>
     //     <SectionOne />
@@ -263,13 +290,178 @@ const Checkout = () => {
     //     {/* <PagesThree /> */}
     // </div>
     <div>
-      <div className={`grid ${selectedMenu == 2 ? "grid-cols-1" : "grid-cols-3"}`}>
+      <Modal
+        size="3xl"
+        backdrop="blur"
+        isOpen={isOpen}
+        onOpenChange={onOpenChange}
+        placement="top-center"
+      >
+        <ModalContent>
+          {(onClose) => (
+            <>
+              <ModalHeader className="flex flex-col gap-1">
+                Pilih Paket <br />
+                <span className='text-sm font-light text-slate-300'>Silahkan pilih paket untuk template ini</span>
+              </ModalHeader>
+              <ModalBody className='p-4 px-6'>
+                <div className='grid grid-cols-4'>
+                  <div>
+                    <h1 className='text-lg font-medium inline-flex items-center py-1'><FiFilter className='mr-2' /> Filter</h1>
+                    <Divider className="my-2" />
+                    <Accordion>
+                      <AccordionItem key="1" aria-label="Accordion 1" title="Rating">
+                        Rating
+                      </AccordionItem>
+                      <AccordionItem key="2" aria-label="Accordion 2" title="Harga">
+                        Harga
+                      </AccordionItem>
+                    </Accordion>
+                  </div>
+                  <div className={`${Styles.hideScrollBar} col-span-3 p-3 px-4 overflow-auto h-64`}>
+                    <h1 className='text-normal font-normal text-slate-400'>Tentukan 1 produk pada proses ini.</h1>
+                    <Input className='my-3' type="text" size="sm" label="Cari Berdasarkan Nama" />
+                    <div className='grid grid-cols-2 gap-5'>
+                      {listPaketCard.map((item, index) => (
+                        <div>
+                          <Card className="shadow-md">
+                            <CardHeader className="bg-[#FBF8F1] px-5 py-5">
+                              <div>
+                                <h4
+                                  className={`font-bold text-2xl mb-2 block text-[#221C35]`}
+                                >
+                                  Bronze
+                                </h4>
+                                <p className={`text-sm font-semibold`}>
+                                  Bebas berkreasi, bikin undangan sendiri. Semua yang kamu butuhkan ada disini.
+                                </p>
+                              </div>
+                            </CardHeader>
+                            <CardBody className="overflow-visible py-2">
+                              <p className="mt-4 ml-3 flex items-center">
+                                <span className={`text-[#307674] text-lg`}>
+                                  <FaCircleCheck />
+                                </span>
+                                <span
+                                  className={`ml-4 text-base font-medium lg:w-full xl:w-72`}
+                                >
+                                  Wedding Fitur
+                                </span>
+                              </p>
+                              <p className="mt-2 ml-3 flex items-center">
+                                <span className={`text-[#307674] text-lg`}>
+                                  <FaCircleCheck />
+                                </span>
+                                <span
+                                  className={`ml-4 text-base font-medium lg:w-full xl:w-72`}
+                                >
+                                  Wedding Fitur
+                                </span>
+                              </p>
+                              <p className="mt-2 ml-3 flex items-center">
+                                <span className={`text-[#307674] text-lg`}>
+                                  <FaCircleCheck />
+                                </span>
+                                <span
+                                  className={`ml-4 text-base font-medium lg:w-full xl:w-72`}
+                                >
+                                  Wedding Fitur
+                                </span>
+                              </p>
+                              <p className="mt-2 ml-3 flex items-center">
+                                <span className={`text-[#307674] text-lg`}>
+                                  <FaCircleCheck />
+                                </span>
+                                <span
+                                  className={`ml-4 text-base font-medium lg:w-full xl:w-72`}
+                                >
+                                  Wedding Fitur
+                                </span>
+                              </p>
+                              <p className="mt-2 ml-3 flex items-center">
+                                <span className={`text-[#307674] text-lg`}>
+                                  <FaCircleCheck />
+                                </span>
+                                <span
+                                  className={`ml-4 text-base font-medium lg:w-full xl:w-72`}
+                                >
+                                  Wedding Fitur
+                                </span>
+                              </p>
+                              <p className="mt-2 ml-3 flex items-center">
+                                <span className={`text-[#307674] text-lg`}>
+                                  <FaCircleCheck />
+                                </span>
+                                <span
+                                  className={`ml-4 text-base font-medium lg:w-full xl:w-72`}
+                                >
+                                  Wedding Fitur
+                                </span>
+                              </p>
+                              <p className="mt-2 ml-3 flex items-center">
+                                <span className={`text-[#307674] text-lg`}>
+                                  <FaCircleCheck />
+                                </span>
+                                <span
+                                  className={`ml-4 text-base font-medium lg:w-full xl:w-72`}
+                                >
+                                  Wedding Fitur
+                                </span>
+                              </p>
+                              <p className="mt-2 ml-3 flex items-center">
+                                <span className={`text-[#307674] text-lg`}>
+                                  <FaCircleCheck />
+                                </span>
+                                <span
+                                  className={`ml-4 text-base font-medium lg:w-full xl:w-72`}
+                                >
+                                  Wedding Fitur
+                                </span>
+                              </p>
+                              <Divider className='my-5' />
+                              <h1 className='text-md font-medium text-slate-400'>Harga</h1>
+                              <h4
+                                className={`font-bold text-lg block text-[#221C35] inline-flex items-end`}
+                              >
+                                Rp 79,000
+                                <span className='ml-2 text-sm line-through'>Rp 99,000</span>
+                              </h4>
+                            </CardBody>
+                            <CardFooter className="pb-0 pt-2 px-4 flex-col items-center">
+                              <Button
+                                className={`mt-4 bg-[#307674] w-full xl:w-80 text-white`}
+                                radius="full"
+                                size="md"
+                              >
+                                Pilih Paket <FaArrowRight />
+                              </Button>
+                            </CardFooter>
+                          </Card>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </ModalBody>
+              <ModalFooter>
+                <Button color="danger" variant="flat" onPress={onClose}>
+                  Batalkan
+                </Button>
+                <Button color="primary" onPress={onClose}>
+                  Simpan
+                </Button>
+              </ModalFooter>
+            </>
+          )}
+        </ModalContent>
+      </Modal>
+      <div className={`grid ${selectedMenu == 2 ? "grid-cols-1" : "xl:grid-cols-3 lg:grid-cols-1"}`}>
         <div className={`${Styles.background} ${selectedMenu == 2 ? "hidden p-0 m-0" : "flex items-end justify-center"}`}>
           <h1 className="text-4xl w-3/4 font-bold text-white py-24">
             Setiap hal hebat dimulai dengan satu langkah kecil.
           </h1>
         </div>
-        <div className="col-span-2 h-screen">
+        <div className={`${selectedMenu == 2 ? "h-max pb-20" : `h-screen lg:${Styles.overflowHidden} lg:h-max`} col-span-2`}>
           <FaTimes
             className="absolute right-7 top-5 text-xl text-slate-400 cursor-pointer"
             onClick={() => router.back()}
@@ -283,7 +475,7 @@ const Checkout = () => {
             ""
           )}
 
-          <div className="grid xl:grid-cols-5 lg:grid-cols-5  grid-cols-1 w-3/4 mt-10 bg-transparent py-18 block mx-auto">
+          <div className="grid xl:grid-cols-5 lg:grid-cols-5 grid-cols-1 w-3/4 mt-10 bg-transparent py-18 block mx-auto">
             {itemList.map((step, index) => (
               <React.Fragment key={index}>
                 <div className="xl:block lg:block inline-flex">
@@ -320,7 +512,7 @@ const Checkout = () => {
               </React.Fragment>
             ))}
           </div>
-          <div className={`${Styles.overflow} w-4/5 mt-14 block mx-auto`}>
+          <div className={`${Styles.overflows} lg:h-3/5 w-4/5 mt-14 block mx-auto`}>
             <form>
               {selectedMenu == 0 ? (
                 /* Slide 1 */
@@ -446,7 +638,7 @@ const Checkout = () => {
                   </h1>
                 </div>
               ) : selectedMenu == 1 ? (
-                <div>
+                <div className="mb-8">
                   <h1 className="text-4xl font-normal text-red-500 mb-3">
                     Detail Pernikahan
                   </h1>
@@ -527,14 +719,14 @@ const Checkout = () => {
                 </div>
               ) : (
                 <div className=''>
-                  <div className="p-5 bg-[#E7F0FF] rounded-xl mb-5">
+                  <div className="p-5 bg-[#E7F0FF] rounded-xl mb-10">
                     <h1 className="text-2xl font-semibold mb-2">Beberapa Pilihan Tema Terbaik Untukmu</h1>
                     <div className="p-4 px-8">
                       <Slider {...settings}>
                         {listCard.map((item, index) => (
                           <div className="px-6">
                             <Card className="py-4">
-                            <CardBody className="overflow-visible py-2">
+                              <CardBody className="overflow-visible py-2">
                                 <Image
                                   alt="Card background"
                                   className="object-cover rounded-xl"
@@ -545,11 +737,7 @@ const Checkout = () => {
                               <CardHeader className="pb-0 pt-2 px-4 flex-col items-start">
                                 <p className="text-tiny text-center block mx-auto uppercase font-bold">{item.nama_tema}</p>
                                 <h1 className="text-sm text-center block mx-auto font-semibold">Preview</h1>
-                                {idArray > 0 ? (
-                                  <Button className="bg-[#221C35] p-2 px-8 mt-4 block mx-auto font-semibold text-sm text-white" radius="full">Pilih Desain</Button>
-                                ) : (
-                                  <Button isDisabled className="bg-[#221C35] p-2 px-8 mt-4 block mx-auto font-semibold text-sm text-white" radius="full">Pilih Desain</Button>
-                                )}
+                                <Button className="bg-[#221C35] p-2 px-8 mt-4 block mx-auto font-semibold text-sm text-white" radius="full" onPress={onOpen}>Pilih Desain</Button>
                               </CardHeader>
                             </Card>
                           </div>
@@ -557,13 +745,13 @@ const Checkout = () => {
                       </Slider>
                     </div>
                   </div>
-                  <h1 className='font-semibold text-3xl'>Keranjang</h1>
+                  <h1 className='font-semibold text-3xl'>Pesanan Kamu</h1>
                   {idArray.length > 0 ? (
                     <h1 className="mb-7 mt-2 text-md font-medium">Daftar produk-produk yang telah dipesan.</h1>
                   ) : (
                     <h1 className="mb-7"></h1>
                   )}
-                  <div className="xl:grid xl:grid-cols-3 lg:flex lg:grid-cols-1 xl:gap-5 lg:gap-5 flex lg:flex-col-reverse grid-cols-1 gap-5">
+                  <div className="xl:grid xl:grid-cols-3 lg:flex lg:flex-col lg:grid-cols-1 xl:gap-5 lg:gap-5 grid-cols-1 gap-5">
                     <div className="xl:col-span-2">
                       <div className="bg-[#E7F0FF] rounded-xl p-10">
                         {
