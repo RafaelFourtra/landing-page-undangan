@@ -4,11 +4,17 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { FaTimes } from "react-icons/fa";
 import { FaCheck, FaArrowLeftLong } from "react-icons/fa6";
-import { Button, Input } from "@nextui-org/react";
+import { FiTrash2 } from "react-icons/fi";
+import { Button, Input, Divider, Card, CardHeader, CardBody, CardFooter, Image } from "@nextui-org/react";
 import Styles from "./css/sectionOneCss.module.css";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
+import Slider from 'react-slick';
+
+// Import CSS untuk react-slick
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 const Checkout = () => {
   const itemList = ["Mulai", "Detail Pernikahan", "Pembayaran"];
@@ -96,8 +102,8 @@ const Checkout = () => {
       selectedMenu === 0
         ? validationSchemaOne
         : selectedMenu === 1
-        ? validationSchemaTwo
-        : "",
+          ? validationSchemaTwo
+          : "",
   });
 
   const handleInputChange = (event) => {
@@ -147,14 +153,109 @@ const Checkout = () => {
           setSelectedMenu(1);
         } else if (selectedMenu === 1) {
           setSelectedMenu(2);
-          handleSubmit(e);
-        } 
+          // handleSubmit(e);
+        }
         setIsNextButtonClicked(false);
       } else {
         setIsNextButtonClicked(true);
       }
     });
   };
+
+  const [idArray, setIdArray] = useState([]);
+  useEffect(() => {
+    const storedIdArray = JSON.parse(window.localStorage.getItem('idArray')) || [];
+    setIdArray(storedIdArray);
+  }, []);
+
+  const listPaketItem = [
+    {
+      title: "Bronze",
+      description:
+        "Bebas berkreasi, bikin undangan sendiri. Semua yang kamu butuhkan ada disini.",
+      harga: 100000,
+      id: 1,
+    },
+    {
+      title: "Silver",
+      description:
+        "Bebas berkreasi, bikin undangan sendiri. Semua yang kamu butuhkan ada disini.",
+      harga: 100000,
+      id: 2,
+    },
+    {
+      title: "Gold",
+      description:
+        "Bebas berkreasi, bikin undangan sendiri. Semua yang kamu butuhkan ada disini.",
+      harga: 100000,
+      id: 3,
+    }
+  ]
+
+  const matchingPaketItem = idArray.map((id) => {
+    return listPaketItem.find((item) => item.id === id);
+  });
+
+  // Remove item from localStorage function
+  const removeIdFromArrayAndLocalStorage = (idToRemove) => {
+    const updatedIdArray = idArray.filter(id => id !== idToRemove);
+    setIdArray(updatedIdArray);
+
+    window.localStorage.setItem('idArray', JSON.stringify(updatedIdArray));
+    alert(`ID ${idToRemove} berhasil dihapus!`);
+  };
+
+  let totalItemPrice = 0
+  idArray.forEach((id) => {
+    const matchedItem = listPaketItem.find((item) => item.id === id);
+    if (matchedItem) {
+      totalItemPrice += matchedItem.harga;
+    }
+  });
+
+  // Crousel Setup
+  const settings = {
+    dots: true,
+    infinite: false,
+    speed: 500,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+          infinite: true,
+          dots: true
+        }
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1
+        }
+      }
+    ]
+  };
+
+  // Get data from DB to carousel
+  const [listCard, setListCard] = useState([]);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch("http://localhost:8000/api/tema");
+        const result = await response.json();
+        setListCard(result.data);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
   return (
     // <div>
     //     <SectionOne />
@@ -162,8 +263,8 @@ const Checkout = () => {
     //     {/* <PagesThree /> */}
     // </div>
     <div>
-      <div className="grid grid-cols-3">
-        <div className={`${Styles.background} flex items-end justify-center`}>
+      <div className={`grid ${selectedMenu == 2 ? "grid-cols-1" : "grid-cols-3"}`}>
+        <div className={`${Styles.background} ${selectedMenu == 2 ? "hidden p-0 m-0" : "flex items-end justify-center"}`}>
           <h1 className="text-4xl w-3/4 font-bold text-white py-24">
             Setiap hal hebat dimulai dengan satu langkah kecil.
           </h1>
@@ -182,7 +283,7 @@ const Checkout = () => {
             ""
           )}
 
-          <div className="grid xl:grid-cols-5 lg:grid-cols-7 grid-cols-1 w-3/4 mt-14 py-15 block mx-auto">
+          <div className="grid xl:grid-cols-5 lg:grid-cols-5  grid-cols-1 w-3/4 mt-10 bg-transparent py-18 block mx-auto">
             {itemList.map((step, index) => (
               <React.Fragment key={index}>
                 <div className="xl:block lg:block inline-flex">
@@ -219,7 +320,7 @@ const Checkout = () => {
               </React.Fragment>
             ))}
           </div>
-          <div className={`${Styles.overflow} w-3/4 mt-14 block mx-auto`}>
+          <div className={`${Styles.overflow} w-4/5 mt-14 block mx-auto`}>
             <form>
               {selectedMenu == 0 ? (
                 /* Slide 1 */
@@ -344,7 +445,7 @@ const Checkout = () => {
                     Semua data harus dilengkapi.
                   </h1>
                 </div>
-              ) : (
+              ) : selectedMenu == 1 ? (
                 <div>
                   <h1 className="text-4xl font-normal text-red-500 mb-3">
                     Detail Pernikahan
@@ -424,27 +525,146 @@ const Checkout = () => {
                     }
                   />
                 </div>
+              ) : (
+                <div className=''>
+                  <div className="p-5 bg-[#E7F0FF] rounded-xl mb-5">
+                    <h1 className="text-2xl font-semibold mb-2">Beberapa Pilihan Tema Terbaik Untukmu</h1>
+                    <div className="p-4 px-8">
+                      <Slider {...settings}>
+                        {listCard.map((item, index) => (
+                          <div className="px-6">
+                            <Card className="py-4">
+                            <CardBody className="overflow-visible py-2">
+                                <Image
+                                  alt="Card background"
+                                  className="object-cover rounded-xl"
+                                  src={`http://localhost:8000/images/thumbnail-tema/${item.thumbnail_tema}`}
+                                  width={270}
+                                />
+                              </CardBody>
+                              <CardHeader className="pb-0 pt-2 px-4 flex-col items-start">
+                                <p className="text-tiny text-center block mx-auto uppercase font-bold">{item.nama_tema}</p>
+                                <h1 className="text-sm text-center block mx-auto font-semibold">Preview</h1>
+                                {idArray > 0 ? (
+                                  <Button className="bg-[#221C35] p-2 px-8 mt-4 block mx-auto font-semibold text-sm text-white" radius="full">Pilih Desain</Button>
+                                ) : (
+                                  <Button isDisabled className="bg-[#221C35] p-2 px-8 mt-4 block mx-auto font-semibold text-sm text-white" radius="full">Pilih Desain</Button>
+                                )}
+                              </CardHeader>
+                            </Card>
+                          </div>
+                        ))}
+                      </Slider>
+                    </div>
+                  </div>
+                  <h1 className='font-semibold text-3xl'>Keranjang</h1>
+                  {idArray.length > 0 ? (
+                    <h1 className="mb-7 mt-2 text-md font-medium">Daftar produk-produk yang telah dipesan.</h1>
+                  ) : (
+                    <h1 className="mb-7"></h1>
+                  )}
+                  <div className="xl:grid xl:grid-cols-3 lg:flex lg:grid-cols-1 xl:gap-5 lg:gap-5 flex lg:flex-col-reverse grid-cols-1 gap-5">
+                    <div className="xl:col-span-2">
+                      <div className="bg-[#E7F0FF] rounded-xl p-10">
+                        {
+                          idArray.length > 0 ? (
+                            matchingPaketItem.map((item, index) => (
+                              <div key={index} className="pr-4 py-4">
+                                <div className="grid grid-cols-4">
+                                  <div className="col-span-3">
+                                    <h1 className="text-lg font-semibold mb-1">{item.title}</h1>
+                                    <h1 className="text-md font-normal mb-3">Harga : <b>Rp. {item.harga.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')}</b></h1>
+                                    <h1 className="text-md font-normal">Total: Rp. {item.harga.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')} X 1 = <b>Rp. {item.harga.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')}</b></h1>
+                                  </div>
+                                  <div>
+                                    <FiTrash2 className="float-right cursor-pointer" onClick={() => removeIdFromArrayAndLocalStorage(item.id)} />
+                                  </div>
+                                </div>
+                                <Divider className="my-4" />
+                              </div>
+                            ))
+                          ) : (
+                            <div className="xl:grid lg:grid xl:grid-cols-3 lg:grid-cols-3 xl:gap-2 lg:gap-2 px-10 grid grid-cols-1">
+                              <div className="flex items-center justify-center">
+                                <img src="/image/cart/cart.png" className="w-96 py-9" alt="me" />
+                              </div>
+                              <div className="col-span-2 flex items-center justify-center">
+                                <div className="p-5">
+                                  <h1 className="font-semibold text-3xl py-4">Wah, keranjang belanjamu kosong</h1>
+                                  <h3 className="text-[#688297] text-md">Wah, keranjang belanjamu kosongWah, keranjang belanjamu kosongWah, keranjang belanjamu kosongWah, keranjang belanjamu kosongWah.</h3>
+                                  <Button className="bg-[#221C35] text-white mt-6" size="md" radius="full">Mulai Cari Tema</Button>
+                                </div>
+                              </div>
+                            </div>
+                          )
+                        }
+                      </div>
+                    </div>
+                    <div>
+                      <div className="bg-[#E7F0FF] rounded-xl p-6">
+                        <div>
+                          <h1 className="font-semibold text-base mb-4">Ringkasan belanja</h1>
+                          <div className="grid grid-cols-2">
+                            <div>
+                              <h1 className="text-sm font-medium mb-3">Total Produk</h1>
+                              <h1 className="text-sm font-medium mb-3">Total Pembelian</h1>
+                              <h1 className="text-sm font-medium mb-3">Potongan Diskon</h1>
+                            </div>
+                            <div>
+                              <h1 className="text-sm font-medium mb-3 text-right">{idArray.length}</h1>
+                              <h1 className="text-sm font-medium mb-3 text-right">{totalItemPrice.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')}</h1>
+                              <h1 className="text-sm font-medium mb-3 text-right">0</h1>
+                            </div>
+                          </div>
+                          <Divider className="my-4" />
+                          <div className="flex justify-between">
+                            <h1 className="text-md font-semibold">Total Pembayaran</h1>
+                            <h1 className="text-md font-semibold">Rp. {totalItemPrice.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')}</h1>
+                          </div>
+                          <h1 className="text-2xl text-center font-semibold my-3 mt-5">12345678</h1>
+                          <div className="grid grid-cols-3">
+                            <div className="flex items-center justify-center">
+                              <div className="bg-red-500 rounded-full mx-2 w-3 h-3"></div>
+                              <h1 className="text-sm text-black font-semibold">Dipesan</h1>
+                            </div>
+                            <div className="flex items-center justify-center">
+                              <div className="bg-[#FFA800] rounded-full mx-2 w-3 h-3"></div>
+                              <h1 className="text-sm text-black font-semibold">Di proses</h1>
+                            </div>
+                            <div className="flex items-center justify-center">
+                              <div className="bg-[#14FF00] rounded-full mx-2 w-3 h-3"></div>
+                              <h1 className="text-sm text-black font-semibold">Selesai</h1>
+                            </div>
+                          </div>
+                          <Button className="w-full mt-8 font-semibold text-white bg-[#307674]">
+                            Checkout
+                          </Button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               )}
             </form>
           </div>
           <div className="w-3/4 block mx-auto">
-            {selectedMenu < 2 ? (
+            {selectedMenu < 1 ? (
               <Button
                 radius="full"
-                className="bg-black text-white w-full py-8 text-xl font-semibold my-5 mt-10"
+                className={`bg-black text-white w-full ${selectedMenu < 1 ? "mt-10" : ""} py-8 text-xl font-semibold my-5`}
                 onClick={handleNextButtonClick}
               >
                 Lanjut
               </Button>
-            ) : (
+            ) : selectedMenu == 1 ? (
               <Button
                 radius="full"
-                className="bg-black text-white w-full py-8 text-xl font-semibold my-5 mt-10"
+                className={`bg-black text-white w-full ${selectedMenu == 1 ? "mt-10" : ""} py-8 text-xl font-semibold my-5`}
                 onClick={handleNextButtonClick}
               >
                 Submit
               </Button>
-            )}
+            ) : (<></>)}
           </div>
         </div>
       </div>
