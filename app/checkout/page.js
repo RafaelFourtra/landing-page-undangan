@@ -200,10 +200,6 @@ const Checkout = () => {
     }
   ]
 
-  const matchingPaketItem = idArray.map((id) => {
-    return listPaketItem.find((item) => item.id === id);
-  });
-
   // Remove item from localStorage function
   const removeIdFromArrayAndLocalStorage = (idToRemove) => {
     const updatedIdArray = idArray.filter(id => id !== idToRemove);
@@ -213,13 +209,7 @@ const Checkout = () => {
     alert(`ID ${idToRemove} berhasil dihapus!`);
   };
 
-  let totalItemPrice = 0
-  idArray.forEach((id) => {
-    const matchedItem = listPaketItem.find((item) => item.id === id);
-    if (matchedItem) {
-      totalItemPrice += matchedItem.harga;
-    }
-  });
+
 
   // Crousel Setup
   const settings = {
@@ -248,7 +238,7 @@ const Checkout = () => {
     ]
   };
 
-  // Get data from DB to carousel
+  // Get data tema from DB to carousel
   const [listCard, setListCard] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
@@ -281,7 +271,63 @@ const Checkout = () => {
     fetchData()
   }, [])
 
+  const combinedMatchingItems = idArray.map(data => {
+    const matchingPaket = listPaketCard.find(item => item.id === data.idPaket);
+    const matchingTema = listCard.find(item => item.id === data.idTema);
+    return { matchingPaket, matchingTema };
+  });
+
+  let totalItemPrice = 0;
+  combinedMatchingItems.forEach((item) => {
+    if (item.matchingPaket) {
+      totalItemPrice += item.matchingPaket.harga;
+    }
+  });
+
+
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
+
+  // Push Router "Mulai Cari Tema"
+  const mulaiCariTemaLink = (e, path) => {
+    router.push(path);
+  };
+
+
+  // Mendapatkan id tema dan id paket, lalu menyimpannya ke dalam local storage
+  const [selectedIdTema, setSelectedIdTema] = useState(null);
+  const getTemaId = (idTema) => {
+    setSelectedIdTema(idTema);
+    onOpen()
+  };
+
+  const handlePilihPaket = (idPaket) => {
+    // Memeriksa apakah selectedIdTema sudah dipilih sebelumnya
+    if (selectedIdTema) {
+      const newData = { idTema: selectedIdTema, idPaket: idPaket };
+
+      const existingData = JSON.parse(window.localStorage.getItem('idArray')) || [];
+
+      const updatedData = [...existingData, newData];
+
+      window.localStorage.setItem('idArray', JSON.stringify(updatedData));
+
+      alert('Data berhasil disimpan!');
+
+      setSelectedIdTema(null);
+    } else {
+      alert('Harap pilih desain terlebih dahulu.');
+    }
+  };
+
+  const getTemaIdData = JSON.parse(window.localStorage.getItem('idArray')) || [];
+  const idTemaArray = getTemaIdData.map(data => data.idTema);
+
+  // Input File Bukti Pembayaran
+  const handleFileChange = (event) => {
+    const file = event.target.files[0];
+    console.log('File yang diunggah:', file);
+  };
+
 
   return (
     // <div>
@@ -432,6 +478,7 @@ const Checkout = () => {
                                 className={`mt-4 bg-[#307674] w-full xl:w-80 text-white`}
                                 radius="full"
                                 size="md"
+                                onPress={() => handlePilihPaket(item.id)}
                               >
                                 Pilih Paket <FaArrowRight />
                               </Button>
@@ -725,11 +772,11 @@ const Checkout = () => {
                       <Slider {...settings}>
                         {listCard.map((item, index) => (
                           <div className="px-6">
-                            <Card className="py-4">
+                            <Card className={`py-4 ${idTemaArray == item.id ? "border-4 border-red-500" : ""}`}>
                               <CardBody className="overflow-visible py-2">
                                 <Image
                                   alt="Card background"
-                                  className="object-cover rounded-xl"
+                                  className={`object-cover rounded-xl ${idTemaArray == item.id ? "grayscale" : ""}`}
                                   src={`http://localhost:8000/images/thumbnail-tema/${item.thumbnail_tema}`}
                                   width={270}
                                 />
@@ -737,7 +784,11 @@ const Checkout = () => {
                               <CardHeader className="pb-0 pt-2 px-4 flex-col items-start">
                                 <p className="text-tiny text-center block mx-auto uppercase font-bold">{item.nama_tema}</p>
                                 <h1 className="text-sm text-center block mx-auto font-semibold">Preview</h1>
-                                <Button className="bg-[#221C35] p-2 px-8 mt-4 block mx-auto font-semibold text-sm text-white" radius="full" onPress={onOpen}>Pilih Desain</Button>
+                                {idTemaArray == item.id ? (
+                                  <Button isDisabled className="bg-[#221C35] p-2 px-8 mt-4 block mx-auto font-semibold text-sm text-white" radius="full" onPress={() => getTemaId(item.id)}>Pilih Desain</Button>
+                                ) : (
+                                  <Button className="bg-[#221C35] p-2 px-8 mt-4 block mx-auto font-semibold text-sm text-white" radius="full" onPress={() => getTemaId(item.id)}>Pilih Desain</Button>
+                                )}
                               </CardHeader>
                             </Card>
                           </div>
@@ -756,16 +807,32 @@ const Checkout = () => {
                       <div className="bg-[#E7F0FF] rounded-xl p-10">
                         {
                           idArray.length > 0 ? (
-                            matchingPaketItem.map((item, index) => (
+                            combinedMatchingItems.map((item, index) => (
                               <div key={index} className="pr-4 py-4">
-                                <div className="grid grid-cols-4">
-                                  <div className="col-span-3">
-                                    <h1 className="text-lg font-semibold mb-1">{item.title}</h1>
-                                    <h1 className="text-md font-normal mb-3">Harga : <b>Rp. {item.harga.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')}</b></h1>
-                                    <h1 className="text-md font-normal">Total: Rp. {item.harga.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')} X 1 = <b>Rp. {item.harga.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')}</b></h1>
+                                <div className="grid grid-cols-5">
+                                  <div className="col-span-4 inline-flex">
+                                    <Image
+                                      alt="Card background"
+                                      className="object-cover rounded-xl"
+                                      src={`http://localhost:8000/images/thumbnail-tema/${item.matchingTema.thumbnail_tema}`}
+                                      width={100}
+                                    />
+                                    <div className="mx-4">
+                                      <h1 className="text-lg font-semibold mb-1">{item.matchingPaket.paket}</h1>
+                                      {typeof item.matchingPaket.harga === 'string' ? (
+                                        <h1 className="text-md font-normal mb-3">Harga : <b>Rp. {parseInt(item.matchingPaket.harga).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')}</b></h1>
+                                      ) : (
+                                        <h1 className="text-md font-normal mb-3">Harga : <b>Rp. {item.matchingPaket.harga.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')}</b></h1>
+                                      )}
+                                      {typeof item.matchingPaket.harga === 'string' ? (
+                                        <h1 className="text-md font-normal">Total: Rp. {parseInt(item.matchingPaket.harga).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')} X 1 = <b>Rp. {parseInt(item.matchingPaket.harga).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')}</b></h1>
+                                      ) : (
+                                        <h1 className="text-md font-normal">Total: Rp. {item.matchingPaket.harga.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')} X 1 = <b>Rp. {item.matchingPaket.harga.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')}</b></h1>
+                                      )}
+                                    </div>
                                   </div>
                                   <div>
-                                    <FiTrash2 className="float-right cursor-pointer" onClick={() => removeIdFromArrayAndLocalStorage(item.id)} />
+                                    <FiTrash2 className="float-right cursor-pointer" onClick={() => removeIdFromArrayAndLocalStorage(item.matchingPaket.id)} />
                                   </div>
                                 </div>
                                 <Divider className="my-4" />
@@ -780,7 +847,7 @@ const Checkout = () => {
                                 <div className="p-5">
                                   <h1 className="font-semibold text-3xl py-4">Wah, keranjang belanjamu kosong</h1>
                                   <h3 className="text-[#688297] text-md">Wah, keranjang belanjamu kosongWah, keranjang belanjamu kosongWah, keranjang belanjamu kosongWah, keranjang belanjamu kosongWah.</h3>
-                                  <Button className="bg-[#221C35] text-white mt-6" size="md" radius="full">Mulai Cari Tema</Button>
+                                  <Button className="bg-[#221C35] text-white mt-6" size="md" radius="full" onClick={(e) => mulaiCariTemaLink(e, "/tema-filter")}>Mulai Cari Tema</Button>
                                 </div>
                               </div>
                             </div>
@@ -800,14 +867,14 @@ const Checkout = () => {
                             </div>
                             <div>
                               <h1 className="text-sm font-medium mb-3 text-right">{idArray.length}</h1>
-                              <h1 className="text-sm font-medium mb-3 text-right">{totalItemPrice.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')}</h1>
+                              <h1 className="text-sm font-medium mb-3 text-right">{parseInt(totalItemPrice).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')}</h1>
                               <h1 className="text-sm font-medium mb-3 text-right">0</h1>
                             </div>
                           </div>
                           <Divider className="my-4" />
                           <div className="flex justify-between">
                             <h1 className="text-md font-semibold">Total Pembayaran</h1>
-                            <h1 className="text-md font-semibold">Rp. {totalItemPrice.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')}</h1>
+                            <h1 className="text-md font-semibold">Rp. {parseInt(totalItemPrice).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')}</h1>
                           </div>
                           <h1 className="text-2xl text-center font-semibold my-3 mt-5">12345678</h1>
                           <div className="grid grid-cols-3">
@@ -823,6 +890,18 @@ const Checkout = () => {
                               <div className="bg-[#14FF00] rounded-full mx-2 w-3 h-3"></div>
                               <h1 className="text-sm text-black font-semibold">Selesai</h1>
                             </div>
+                          </div>
+                          <div className="relative mt-3 w-full">
+                            <label htmlFor="file-upload" className="text-sm font-medium text-gray-700">
+                              Upload File Bukti Pembayaran
+                            </label>
+                            <div className="mt-1 flex items-center w-full">
+                              <label htmlFor="file-upload" className="cursor-pointer relative w-full bg-white border border-gray-300 shadow-sm py-2 px-4 text-sm leading-4 font-medium text-gray-700 rounded-md">
+                                Choose a file
+                                <input id="file-upload" name="file-upload" type="file" className="sr-only" onChange={handleFileChange} />
+                              </label>
+                            </div>
+                            <p className="mt-2 text-xs text-gray-500">PNG, JPG, GIF up to 10MB</p>
                           </div>
                           <Button className="w-full mt-8 font-semibold text-white bg-[#307674]">
                             Checkout
