@@ -12,10 +12,17 @@ import {
   NavbarMenuItem,
   Image,
   Avatar,
+  Modal,
+  ModalContent,
+  ModalHeader,
+  ModalBody,
+  ModalFooter,
+  useDisclosure,
 } from "@nextui-org/react";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { FiShoppingCart } from "react-icons/fi";
+import { FaWhatsapp } from "react-icons/fa6";
 import Styles from "./css/navbarCss.module.css";
 import Link from "next/link";
 
@@ -23,6 +30,7 @@ const Navbars = () => {
   const pathname = usePathname();
   const isActiveOne = pathname === "/";
   const isActiveTwo = pathname.startsWith("/tema-filter");
+  const { isOpen, onOpen, onOpenChange } = useDisclosure();
 
   const router = useRouter();
   const handleClick = (e, path) => {
@@ -34,10 +42,15 @@ const Navbars = () => {
   // Check jika ada item masuk ke cart
   const [idArray, setIdArray] = useState([]);
   const [isLogin, setIsLogin] = useState(false);
+  const [userName, setUsername] = useState("");
+  const [emailName, setEmail] = useState("");
+
   useEffect(() => {
     const checkUser = JSON.parse(window.localStorage.getItem("user"));
     if (checkUser) {
       setIsLogin(true);
+      setUsername(checkUser.username);
+      setEmail(checkUser.email);
     }
     const storedIdArray =
       JSON.parse(window.localStorage.getItem("idArray")) || [];
@@ -48,6 +61,11 @@ const Navbars = () => {
   useEffect(() => {
     setTotalItemInsideCart(idArray.length);
   }, [idArray]);
+
+  const logOut = () => {
+    localStorage.removeItem("user")
+    setIsLogin(false);
+  }
 
   return (
     <Navbar className={`p-2 ${Styles.navbar} bg-white`}>
@@ -102,13 +120,77 @@ const Navbars = () => {
         )}
         <div className="border border-[#3A4C5A] rounded-full h-3/4"></div>
         {isLogin ? (
-          <Avatar showFallback src="https://images.unsplash.com/broken" />
+          <>
+            <Button
+              onPress={onOpen}
+              className="text-[#307674] font-semibold"
+              variant="bordered"
+            >
+              Akun Saya
+            </Button>
+            <Modal isOpen={isOpen} onOpenChange={onOpenChange}>
+              <ModalContent>
+                {(onClose) => (
+                  <>
+                    <ModalHeader className="flex flex-col gap-1">
+                      <div className="grid grid-cols-12">
+                        <div className="col-span-1">
+                          <Avatar
+                            className="mt-1"
+                            showFallback
+                            src="/image/logo/user.png"
+                          />
+                        </div>
+                        <div className="col-span-11">
+                          <h5 className="ml-6">{userName}</h5>
+                          <p className="ml-6 text-sm">{emailName}</p>
+                        </div>
+                      </div>
+                    </ModalHeader>
+                    <ModalBody>
+                      <div className="grid grid-cols-12">
+                        <div className="col-span-12">
+                          <Button variant="light" className="w-full">
+                            <h4 className="text-3xl font-bold">
+                              Dashboard Saya
+                            </h4>
+                          </Button>
+                        </div>
+                      </div>
+                      <div className="grid grid-cols-12">
+                        <div className="col-span-12 mt-8">
+                          <Button
+                            className="text-[#307674] font-semibold w-full"
+                            variant="bordered"
+                            onPress={onClose}
+                            onClick={logOut}
+                          >
+                            Keluar
+                          </Button>
+                        </div>
+                        <div className="col-span-12 mt-4">
+                          <Button
+                            className="text-white bg-[#307674] font-semibold w-full"
+                            onPress={onClose}
+                          >
+                            <FaWhatsapp /> Hubungi Kami
+                          </Button>
+                        </div>
+                      </div>
+                    </ModalBody>
+                    <ModalFooter></ModalFooter>
+                  </>
+                )}
+              </ModalContent>
+            </Modal>
+          </>
         ) : (
-          <NavbarItem className="bg-[#307674] p-2 px-8 rounded-full">
-            <Link className="text-white" href="#">
-              Login
-            </Link>
-          </NavbarItem>
+          <Button
+            className="text-white bg-[#307674] font-semibold"
+            onClick={() => router.push("/login")}
+          >
+            Login
+          </Button>
         )}
       </NavbarContent>
       <NavbarMenu className="px-5 py-10">

@@ -87,19 +87,19 @@ const Checkout = () => {
 
   const validationSchemaTwo = Yup.object().shape({
     gmaps:
-      selectedMenu === 2
+      selectedMenu === 1
         ? Yup.string().required("Gmaps is required")
         : Yup.string(),
     alamat:
-      selectedMenu === 2
+      selectedMenu === 1
         ? Yup.string().required("Alamat is required")
         : Yup.string(),
     gedung:
-      selectedMenu === 2
+      selectedMenu === 1
         ? Yup.string().required("Gedung is required")
         : Yup.string(),
     kota:
-      selectedMenu === 2
+      selectedMenu === 1
         ? Yup.string().required("Kota is required")
         : Yup.string(),
   });
@@ -140,7 +140,7 @@ const Checkout = () => {
       );
 
       if (response.status === 200) {
-        console.log("oke");
+        console.log(response);
       } else {
         console.log("gt");
         console.error("Gagal:", response);
@@ -529,13 +529,13 @@ const Checkout = () => {
                   <div className="xl:flex lg:flex xl:items-center lg:items-center xl:justify-center lg:justify-center">
                     <div className="w-7 h-7 rounded-full flex items-center justify-center bg-red-500 xl:mb-0 lg:mb-0 mb-10">
                       <h1 className="text-xl text-white font-semibold">
-                        {selectedMenu == 2 ? (
+                        {selectedMenu == 1 ? (
                           step == "Mulai" ? (
                             <FaCheck />
                           ) : (
                             index + 1
                           )
-                        ) : selectedMenu == 3 ? (
+                        ) : selectedMenu == 2 ? (
                           step == "Mulai" ? (
                             <FaCheck />
                           ) : step == "Detail Pernikahan" ? (
@@ -685,6 +685,7 @@ const Checkout = () => {
                   </h1>
                 </div>
               ) : selectedMenu == 1 ? (
+
                 <div className="mb-8">
                   <h1 className="text-4xl font-normal text-red-500 mb-3">
                     Detail Pernikahan
@@ -699,72 +700,87 @@ const Checkout = () => {
                   <h3 className="text-lg font-light text-black mb-3">
                     Masukan lokasi acara
                   </h3>
-                  <Input
-                    type="text"
-                    label="Link Google Maps"
-                    name="gmaps"
-                    variant="underlined"
-                    value={formValues.gmaps}
-                    onChange={handleInputChange}
-                    isInvalid={
-                      isNextButtonClicked && formik.errors.gmaps ? true : false
-                    }
-                    errorMessage={
-                      isNextButtonClicked && formik.errors.gmaps
-                        ? formik.errors.gmaps
-                        : ""
-                    }
-                  />
-                  <Input
-                    type="text"
-                    label="Alamat"
-                    name="alamat"
-                    variant="underlined"
-                    value={formValues.alamat}
-                    onChange={handleInputChange}
-                    isInvalid={
-                      isNextButtonClicked && formik.errors.alamat ? true : false
-                    }
-                    errorMessage={
-                      isNextButtonClicked && formik.errors.alamat
-                        ? formik.errors.alamat
-                        : ""
-                    }
-                  />
-                  <Input
-                    type="text"
-                    label="Gedung"
-                    name="gedung"
-                    variant="underlined"
-                    value={formValues.gedung}
-                    onChange={handleInputChange}
-                    isInvalid={
-                      isNextButtonClicked && formik.errors.gedung ? true : false
-                    }
-                    errorMessage={
-                      isNextButtonClicked && formik.errors.gedung
-                        ? formik.errors.gedung
-                        : ""
-                    }
-                  />
-                  <Input
-                    type="text"
-                    label="Kota"
-                    name="kota"
-                    variant="underlined"
-                    value={formValues.kota}
-                    onChange={handleInputChange}
-                    isInvalid={
-                      isNextButtonClicked && formik.errors.kota ? true : false
-                    }
-                    errorMessage={
-                      isNextButtonClicked && formik.errors.kota
-                        ? formik.errors.kota
-                        : ""
-                    }
-                  />
+                  <div>
+                    <Input
+                      type="text"
+                      label="Link Google Maps"
+                      name="gmaps"
+                      variant="underlined"
+                      value={formValues.gmaps}
+                      onChange={handleInputChange}
+                      isInvalid={
+                        isNextButtonClicked && formik.errors.gmaps
+                          ? true
+                          : false
+                      }
+                      errorMessage={
+                        isNextButtonClicked && formik.errors.gmaps
+                          ? formik.errors.gmaps
+                          : ""
+                      }
+                    />
+                  </div>
+                  <div>
+                    <Input
+                      type="text"
+                      label="Alamat"
+                      name="alamat"
+                      variant="underlined"
+                      value={formValues.alamat}
+                      onChange={handleInputChange}
+                      isInvalid={
+                        isNextButtonClicked && formik.errors.alamat
+                          ? true
+                          : false
+                      }
+                      errorMessage={
+                        isNextButtonClicked && formik.errors.alamat
+                          ? formik.errors.alamat
+                          : ""
+                      }
+                    />
+                  </div>
+                  <div>
+                    <Input
+                      type="text"
+                      label="Gedung"
+                      name="gedung"
+                      variant="underlined"
+                      value={formValues.gedung}
+                      onChange={handleInputChange}
+                      isInvalid={
+                        isNextButtonClicked && formik.errors.gedung
+                          ? true
+                          : false
+                      }
+                      errorMessage={
+                        isNextButtonClicked && formik.errors.gedung
+                          ? formik.errors.gedung
+                          : ""
+                      }
+                    />
+                  </div>
+                  <div>
+                    <Input
+                      type="text"
+                      label="Kota"
+                      name="kota"
+                      variant="underlined"
+                      value={formValues.kota}
+                      onChange={handleInputChange}
+                      isInvalid={
+                        isNextButtonClicked && formik.errors.kota ? true : false
+                      }
+                      errorMessage={
+                        isNextButtonClicked && formik.errors.kota
+                          ? formik.errors.kota
+                          : ""
+                      }
+                    />
+                  </div>
                 </div>
               ) : (
+
                 <div className=''>
                   <div className="p-5 bg-[#E7F0FF] rounded-xl mb-10">
                     <h1 className="text-2xl font-semibold mb-2">Beberapa Pilihan Tema Terbaik Untukmu</h1>
