@@ -20,13 +20,12 @@ const SectionOne = () => {
               <p
                 className={`${styles.description} leading-[1.6rem] py-5 text-2l`}
               >
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Exercitationem et explicabo repellendus eaque assumenda eum
-                blanditiis excepturi aspernatur voluptates?
-              </p>
-              <p className={`${styles.description} leading-[1.6rem] text-2l`}>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. itiis
-                excepturi aspernatur voluptates?
+                Temukan magisnya cinta dalam berbagai pilihan tema undangan
+                pernikahan kami. Dari sentuhan klasik yang memikat hingga desain
+                modern yang memukau, setiap undangan mencerminkan keunikan
+                setiap pasangan. Pilih tema yang menciptakan cerita indah Anda,
+                dan rayakan awal dari perjalanan cinta abadi Anda dengan gaya
+                yang tak terlupakan.
               </p>
             </div>
           </div>
