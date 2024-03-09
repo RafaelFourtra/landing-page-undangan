@@ -508,7 +508,7 @@ const Checkout = () => {
             Setiap hal hebat dimulai dengan satu langkah kecil.
           </h1>
         </div>
-        <div className={`${selectedMenu == 2 ? "h-max pb-20" : `h-screen lg:${Styles.overflowHidden} lg:h-max`} col-span-2`}>
+        <div className={`${selectedMenu == 2 ? "h-max pb-20" : `xl:h-max h-fit lg:${Styles.overflowHidden} lg:h-full`} col-span-2`}>
           <FaTimes
             className="absolute right-7 top-5 text-xl text-slate-400 cursor-pointer"
             onClick={() => router.back()}
@@ -522,13 +522,13 @@ const Checkout = () => {
             ""
           )}
 
-          <div className="grid xl:grid-cols-5 lg:grid-cols-5 grid-cols-1 w-3/4 mt-10 bg-transparent py-18 block mx-auto">
+          <div className="grid xl:grid-cols-5 lg:grid-cols-5 grid-cols-1 xl:w-4/5 lg:w-4/5 inline-flex mt-10 bg-transparent py-18 block mx-auto">
             {itemList.map((step, index) => (
               <React.Fragment key={index}>
                 <div className="xl:block lg:block inline-flex">
                   <div className="xl:flex lg:flex xl:items-center lg:items-center xl:justify-center lg:justify-center">
-                    <div className="w-7 h-7 rounded-full flex items-center justify-center bg-red-500 xl:mb-0 lg:mb-0 mb-10">
-                      <h1 className="text-xl text-white font-semibold">
+                    <div className="xl:w-7 lg:w-7 w-6 xl:h-7 lg:h-7 h-6 rounded-full flex items-center justify-center bg-red-500 xl:mb-0 lg:mb-0 mb-10">
+                      <h1 className="xl:text-xl lg:text-xl text-lg text-white font-semibold">
                         {selectedMenu == 2 ? (
                           step == "Mulai" ? (
                             <FaCheck />
@@ -549,7 +549,7 @@ const Checkout = () => {
                       </h1>
                     </div>
                   </div>
-                  <h1 className="xl:text-center lg:text-center xl:text-sm lg:text-sm text-xl xl:pl-0 lg:pl-0 pl-5 xl:font-semibold lg:font-semibold font-normal my-3">
+                  <h1 className="xl:text-center lg:text-center xl:text-sm lg:text-sm text-xl xl:pl-0 lg:pl-0 pl-5 xl:font-semibold lg:font-semibold font-normal my-3 xl:block lg:block hidden">
                     {step}
                   </h1>
                 </div>
@@ -572,7 +572,7 @@ const Checkout = () => {
                     Informasi Mempelai
                   </h1>
                   <div className="my-3">
-                    <div className="grid grid-cols-2 gap-7">
+                    <div className="grid xl:grid-cols-2 lg:grid-cols-2 grid-cols-1 xl:gap-7 lg:gap-7 gap-0">
                       <div>
                         <Input
                           type="text"
@@ -614,7 +614,7 @@ const Checkout = () => {
                         />
                       </div>
                     </div>
-                    <div className="grid grid-cols-2 gap-7">
+                    <div className="grid xl:grid-cols-2 lg:grid-cols-2 grid-cols-1 xl:gap-7 lg:gap-7 gap-0">
                       <div>
                         <Input
                           type="text"
@@ -803,21 +803,21 @@ const Checkout = () => {
                     <h1 className="mb-7"></h1>
                   )}
                   <div className="xl:grid xl:grid-cols-3 lg:flex lg:flex-col lg:grid-cols-1 xl:gap-5 lg:gap-5 grid-cols-1 gap-5">
-                    <div className="xl:col-span-2">
+                    <div className="xl:col-span-2 mb-3">
                       <div className="bg-[#E7F0FF] rounded-xl p-10">
                         {
                           idArray.length > 0 ? (
                             combinedMatchingItems.map((item, index) => (
                               <div key={index} className="pr-4 py-4">
                                 <div className="grid grid-cols-5">
-                                  <div className="col-span-4 inline-flex">
+                                  <div className="col-span-4 xl:inline-flex lg:inline-flex block">
                                     <Image
                                       alt="Card background"
                                       className="object-cover rounded-xl"
                                       src={`http://localhost:8000/images/thumbnail-tema/${item.matchingTema.thumbnail_tema}`}
                                       width={100}
                                     />
-                                    <div className="mx-4">
+                                    <div className="xl:mx-4 lg:mx-4 mx-0">
                                       <h1 className="text-lg font-semibold mb-1">{item.matchingPaket.paket}</h1>
                                       {typeof item.matchingPaket.harga === 'string' ? (
                                         <h1 className="text-md font-normal mb-3">Harga : <b>Rp. {parseInt(item.matchingPaket.harga).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')}</b></h1>
@@ -918,7 +918,7 @@ const Checkout = () => {
             {selectedMenu < 1 ? (
               <Button
                 radius="full"
-                className={`bg-black text-white w-full ${selectedMenu < 1 ? "mt-10" : ""} py-8 text-xl font-semibold my-5`}
+                className={`bg-black text-white w-full ${selectedMenu < 1 ? "mt-5" : ""} py-8 text-xl font-semibold my-5`}
                 onClick={handleNextButtonClick}
               >
                 Lanjut
