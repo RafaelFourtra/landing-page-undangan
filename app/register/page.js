@@ -60,119 +60,103 @@ const Register = () => {
     }
   };
   return (
-    // <div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
-    //   <div class="mx-auto sm:w-full sm:max-w-sm">
-    //     <Image className="mx-auto w-6/12 mb-8" src="/image/logo/logo_text.svg" />
-    //   </div>
-
-    // </div>
-
-    <div className={`${Styles.background} h-screen flex items-center justify-center`}>
-      <div className="grid grid-cols-2">
-        <div className="flex items-center justify-center">
-          <div className="block">
-            <Image className="w-4/12 mx-auto mb-6" src="/image/logo/logo_text.svg" />
-            <p className="text-center px-14">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-              incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-              quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-          </div>
-        </div>
-        <div>
-          <Card className="py-4 w-9/12 bg-white rounded-xl  mx-auto">
-            <h2 class="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
-              Registrasi
-            </h2>
-            <CardBody className="overflow-visible py-2">
-              <div class="mt-10 px-8 sm:mx-auto sm:w-full sm:max-w-sm">
-                <form class="space-y-6" action="#" method="POST">
-                  <div>
-                    <Input
-                      type="text"
-                      label="Nama Lengkap"
-                      variant="underlined"
-                      name="name"
-                      isRequired={true}
-                      onChange={handleInputChange}
-                      isInvalid={isError && errorMessages.name ? true : false}
-                      errorMessage={
-                        isError && errorMessages.name ? errorMessages.name : ""
-                      }
-                    />
-                  </div>
-                  <div>
-                    <Input
-                      type="email"
-                      label="Email"
-                      variant="underlined"
-                      name="email"
-                      isRequired={true}
-                      onChange={handleInputChange}
-                      isInvalid={isError && errorMessages.email ? true : false}
-                      errorMessage={
-                        isError && errorMessages.email ? errorMessages.email : ""
-                      }
-                    />
-                  </div>
-
-                  <div>
-                    <Input
-                      type="text"
-                      label="Nomor WhatsApp"
-                      variant="underlined"
-                      name="whatsapp"
-                      isRequired={true}
-                      onChange={handleInputChange}
-                      isInvalid={isError && errorMessages.whatsapp ? true : false}
-                      errorMessage={
-                        isError && errorMessages.whatsapp
-                          ? errorMessages.whatsapp
-                          : ""
-                      }
-                    />
-                  </div>
-
-                  <div>
-                    <Input
-                      type="password"
-                      label="Password"
-                      variant="underlined"
-                      name="password"
-                      isRequired={true}
-                      onChange={handleInputChange}
-                      isInvalid={isError && errorMessages.password ? true : false}
-                      errorMessage={
-                        isError && errorMessages.password
-                          ? errorMessages.password
-                          : ""
-                      }
-                    />
-                  </div>
-
-                  <div>
-                    <Button
-                      radius="full"
-                      className={`flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 ${Styles.buttonBackground}`}
-                      onClick={handleSubmitButton}
-                    >
-                      Daftar
-                    </Button>
-                  </div>
-                </form>
-
-                <p class="mt-10 text-center text-sm text-gray-500">
-                  Sudah mempunyai akun?
-                  <a
-                    href="#"
-                    class="font-semibold leading-6 text-[#54BAB9] hover:text-indigo-500"
-                  >
-                    Login
-                  </a>
-                </p>
-              </div>
-            </CardBody>
-          </Card>
-        </div>
+    <div class={`flex min-h-full flex-col justify-center px-6 py-12 lg:px-8 ${Styles.background}`}>
+      <div class="mx-auto sm:w-full sm:max-w-sm">
+        <Image className="mx-auto w-6/12 mb-8" src="/image/logo/logo_text.svg" />
       </div>
+      <Card className="py-4 w-4/12 bg-white rounded-xl  mx-auto">
+        <h2 class="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
+          Registrasi
+        </h2>
+        <CardBody className="overflow-visible py-2">
+          <div class="mt-10 px-8 sm:mx-auto sm:w-full sm:max-w-sm">
+            <form class="space-y-6" action="#" method="POST">
+              <div>
+                <Input
+                  type="text"
+                  label="Nama Lengkap"
+                  variant="underlined"
+                  name="name"
+                  isRequired={true}
+                  onChange={handleInputChange}
+                  isInvalid={isError && errorMessages.name ? true : false}
+                  errorMessage={
+                    isError && errorMessages.name ? errorMessages.name : ""
+                  }
+                />
+              </div>
+              <div>
+                <Input
+                  type="email"
+                  label="Email"
+                  variant="underlined"
+                  name="email"
+                  isRequired={true}
+                  onChange={handleInputChange}
+                  isInvalid={isError && errorMessages.email ? true : false}
+                  errorMessage={
+                    isError && errorMessages.email ? errorMessages.email : ""
+                  }
+                />
+              </div>
+
+              <div>
+                <Input
+                  type="text"
+                  label="Nomor WhatsApp"
+                  variant="underlined"
+                  name="whatsapp"
+                  isRequired={true}
+                  onChange={handleInputChange}
+                  isInvalid={isError && errorMessages.whatsapp ? true : false}
+                  errorMessage={
+                    isError && errorMessages.whatsapp
+                      ? errorMessages.whatsapp
+                      : ""
+                  }
+                />
+              </div>
+
+              <div>
+                <Input
+                  type="password"
+                  label="Password"
+                  variant="underlined"
+                  name="password"
+                  isRequired={true}
+                  onChange={handleInputChange}
+                  isInvalid={isError && errorMessages.password ? true : false}
+                  errorMessage={
+                    isError && errorMessages.password
+                      ? errorMessages.password
+                      : ""
+                  }
+                />
+              </div>
+
+              <div>
+                <Button
+                  radius="full"
+                  className={`flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 ${Styles.buttonBackground}`}
+                  onClick={handleSubmitButton}
+                >
+                  Daftar
+                </Button>
+              </div>
+            </form>
+
+            <p class="mt-10 text-center text-sm text-gray-500">
+              Sudah mempunyai akun?
+              <a
+                href="#"
+                class="font-semibold leading-6 text-[#54BAB9] hover:text-indigo-500"
+              >
+                Login
+              </a>
+            </p>
+          </div>
+        </CardBody>
+      </Card>
     </div>
   );
 };
