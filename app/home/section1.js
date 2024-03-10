@@ -4,6 +4,7 @@ import styles from "../home/css/section1Home.module.css";
 import { FaWhatsapp } from "react-icons/fa6";
 import Typewriter from "typewriter-effect";
 import { Button } from "@nextui-org/react";
+import { FaArrowRight } from "react-icons/fa";
 
 const SectionOne = () => {
   const text = () => {
@@ -40,19 +41,28 @@ const SectionOne = () => {
           <p
             className={`${styles.description} text-lg lg:text-2l leading-[1.6rem] py-5 mb-5 lg:mb-0`}
           >
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi
-            corrupti ea repudiandae inventore eveniet veniam excepturi, autem
-            dolorum omnis. Exercitationem et explicabo repellendus eaque
-            assumenda eum blanditiis excepturi aspernatur voluptates?
+            Buat undangan digital pernikahan mu di Mesrain. Dengan pilih tema
+            yang sesuai, sunting detail acara dengan mudah, tambahkan foto
+            spesialmu, dan dalam hitungan menit, undangan impianmu akan
+            terwujud.
           </p>
           {/* Menyembunyikan button pada mode mobile */}
-          <Button
-            className={`${styles.button} mt-3 bg-transparent hidden sm:block lg:flex xl:flex`}
-            radius="full"
-            size="md"
-          >
-            Konsultasi Gratis <FaWhatsapp />
-          </Button>
+          <div className="lg:flex items-center hidden">
+            <Button
+              className={`bg-[#307674] text-white lg:mt-3  lg:block lg:flex xl:flex`}
+              radius="full"
+              size={window.innerWidth > 1020 ? "lg" : "md"}
+            >
+              Daftar & Mulai <FaArrowRight />
+            </Button>
+            <Button
+              className={`${styles.button} lg:mt-3 lg:block lg:flex xl:flex ml-3`}
+              radius="full"
+              size={window.innerWidth > 1020 ? "lg" : "md"}
+            >
+              Konsultasi Gratis <FaWhatsapp />
+            </Button>
+          </div>
         </div>
       </div>
       <div className="xl:mt-20 lg:mt-32">
@@ -60,6 +70,21 @@ const SectionOne = () => {
           className="block mx-auto  w-3/4"
           src="/image/home/section1/section-1.png"
         />
+
+        <Button
+          className={`bg-[#307674] text-white mt-8 lg:hidden w-full`}
+          radius="full"
+          size={window.innerWidth > 1020 ? "lg" : "md"}
+        >
+          Daftar & Mulai <FaArrowRight />
+        </Button>
+        <Button
+          className={`${styles.button} mt-2 lg:hidden  w-full`}
+          radius="full"
+          size={window.innerWidth > 1020 ? "lg" : "md"}
+        >
+          Konsultasi Gratis <FaWhatsapp />
+        </Button>
       </div>
     </div>
   );

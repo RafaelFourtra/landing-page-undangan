@@ -1,3 +1,6 @@
+"use client";
+
+import { useState, useEffect } from "react";
 import React from "react";
 import {
   Card,
@@ -6,35 +9,54 @@ import {
   Image,
   CardFooter,
   Button,
+  Badge,
 } from "@nextui-org/react";
 import { FaArrowRight } from "react-icons/fa6";
 import styles from "../home/css/section2Home.module.css";
 
 const SectionTwo = () => {
+  const [windowSize, setWindowSize] = useState("md");
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowSize(window.innerWidth > 1020 ? "lg" : "md");
+    };
+
+    handleResize();
+
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
   const list = [
     {
+      id: 1,
       title: "Undangan Digital",
       img: "/image/home/section2/card-digital-invitation.png",
       description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        "Raih momen spesial pernikahanmu dengan undangan digital yang elegan! Layanan pembuatan undangan digital kami menawarkan desain eksklusif dan kualitas terbaik untuk mengabadikan momen indahmu.",
     },
     {
+      id: 2,
       title: "Undangan 3D",
       img: "/image/home/section2/card-invitation-3d-grayscale.png",
       description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        "Buat undangan 3D yang unik dan mengesankan! Pilih desain yang simpel namun dapat disesuaikan sesuai selera. Ayo, raih momen spesialmu dengan undangan digital 3D yang menarik perhatian!",
     },
     {
+      id: 3,
       title: "Filter Instagram",
       img: "/image/home/section2/card-instagram-filter-grayscale.png",
       description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        "Dapatkan filter Instagram eksklusif untuk pernikahanmu! Desain kustom yang unik sesuai tema pernikahanmu. Filter ini akan menambahkan sentuhan magis pada foto dan cerita perjalananmu ke pelaminan.",
     },
     {
+      id: 4,
       title: "Undangan Cetak",
       img: "/image/home/section2/card-print-invitation-grayscale.png",
       description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        "Raih momen spesial pernikahanmu dengan undangan cetak yang elegan! Layanan pembuatan undangan cetak kami menawarkan desain eksklusif dan kualitas cetak terbaik untuk mengabadikan momen indahmu.",
     },
   ];
 
@@ -64,7 +86,16 @@ const SectionTwo = () => {
               </CardBody>
               <CardFooter className="pb-0 pt-2 px-4 flex-col items-start">
                 <h4 className={`${styles.titleColor} font-bold text-large`}>
-                  {item.title}
+                  {item.id !== 1 ? (
+                    <>
+                      {item.title}
+                      <span className="p-0.5 bg-red-500 text-[10px] rounded-xl ml-2 text-white mb-2">
+                        Coming Soon
+                      </span>
+                    </>
+                  ) : (
+                    item.title
+                  )}
                 </h4>
                 <p
                   className={`${styles.descriptionCardColor} mt-2 text-sm font-bold`}
@@ -74,7 +105,8 @@ const SectionTwo = () => {
                 <Button
                   className={`${styles.descriptionCardColor} mt-4 bg-transparent`}
                   radius="full"
-                  size="md"
+                  size={windowSize}
+                  isDisabled={item.id == 1 ? false : true}
                 >
                   Lihat lebih lanjut <FaArrowRight />
                 </Button>
