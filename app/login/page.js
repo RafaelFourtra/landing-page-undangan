@@ -70,7 +70,7 @@ const Login = () => {
       <div class="mx-auto sm:w-full sm:max-w-sm">
         <Image className="mx-auto w-6/12 mb-8" src="/image/logo/logo_text.svg" />
       </div>
-      <Card className="py-4 w-4/12 bg-white rounded-xl  mx-auto">
+      <Card className="py-4 -fxl:w-4/12 lg:w-6/12 wull bg-white rounded-xl mx-auto">
         <h2 class="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
           Masuk
         </h2>
