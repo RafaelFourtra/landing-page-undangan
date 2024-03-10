@@ -1,0 +1,8 @@
+.background {
+    background: linear-gradient(110deg, #ffffff 60%, #54BAB9 60%);
+    /* background-image: linear-gradient(to right, #54BAB9, #E9DAC1); */
+}
+
+.buttonBackground {
+    background-color: #54BAB9;
+}
